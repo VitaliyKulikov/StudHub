@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+//@Controller
 public class TestController {
 
     private PrincipalRepository repository;
@@ -19,10 +20,10 @@ public class TestController {
         this.repository = repository;
     }
 
-    @GetMapping("/users")
-    public ResponseEntity<List<Principal>> getUsers() {
-        return ResponseEntity.ok(repository.getAllUsers());
-    }
+//    @GetMapping("/users")
+//    public ResponseEntity<List<Principal>> getUsers() {
+//        return ResponseEntity.ok(new ArrayList(repository.findAll().iterator()));
+//    }
 
     @GetMapping("/hello")
     public ResponseEntity<String> getHello() {
