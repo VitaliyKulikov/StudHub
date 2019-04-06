@@ -49,8 +49,6 @@ public class Principal implements UserDetails {
     @ManyToMany
     private List<Organisation> organisations;
 
-
-
     @Override
     public String getUsername() {
         return username;
