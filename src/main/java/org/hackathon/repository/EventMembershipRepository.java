@@ -5,7 +5,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.annotation.Secured;
 
-@RepositoryRestResource(collectionResourceRel = "membership", path = "membership")
+@RepositoryRestResource(collectionResourceRel = "memberships", path = "memberships")
 public interface EventMembershipRepository  extends PagingAndSortingRepository<EventMembership, Long> {
 
     @Override

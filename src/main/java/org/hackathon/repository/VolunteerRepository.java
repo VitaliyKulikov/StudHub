@@ -1,6 +1,5 @@
 package org.hackathon.repository;
 
-import org.hackathon.entity.Principal;
 import org.hackathon.entity.Volunteer;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

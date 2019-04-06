@@ -31,6 +31,9 @@ public class Volunteer {
     @ManyToMany
     private List<Organisation> organisations;
 
+    @OneToMany(mappedBy="volunteer")
+    private List<EventMembership> eventMemberships;
+
     public String getFirstName() {
         return firstName;
     }
@@ -85,5 +88,13 @@ public class Volunteer {
 
     public void setPrincipal(Principal principal) {
         this.principal = principal;
+    }
+
+    public List<EventMembership> getEventMemberships() {
+        return eventMemberships;
+    }
+
+    public void setEventMemberships(List<EventMembership> eventMemberships) {
+        this.eventMemberships = eventMemberships;
     }
 }

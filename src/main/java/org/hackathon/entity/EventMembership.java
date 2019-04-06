@@ -1,6 +1,9 @@
 package org.hackathon.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -9,13 +12,10 @@ public class EventMembership {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private long id;
+    private Long id;
 
     @ManyToOne
-    private Principal volunteer;
-
-    @ManyToOne
-    private Principal validator;
+    private Volunteer volunteer;
 
     @ManyToOne
     private Organisation owner;
@@ -24,25 +24,20 @@ public class EventMembership {
     private Event event;
 
     @Column(name = "mark")
-    private int mark;
+    @Max(5)
+    @Min(0)
+    @NotNull
+    private Integer mark;
 
     @Column(name = "timeSpent")
-    private int timeSpent;
+    private Integer timeSpent;
 
-    public Principal getVolunteer() {
+    public Volunteer getVolunteer() {
         return volunteer;
     }
 
-    public void setVolunteer(Principal volunteer) {
+    public void setVolunteer(Volunteer volunteer) {
         this.volunteer = volunteer;
-    }
-
-    public Principal getValidator() {
-        return validator;
-    }
-
-    public void setValidator(Principal validator) {
-        this.validator = validator;
     }
 
     public Organisation getOwner() {
@@ -61,19 +56,19 @@ public class EventMembership {
         this.event = event;
     }
 
-    public int getMark() {
+    public Integer getMark() {
         return mark;
     }
 
-    public void setMark(int mark) {
+    public void setMark(Integer mark) {
         this.mark = mark;
     }
 
-    public int getTimeSpent() {
+    public Integer getTimeSpent() {
         return timeSpent;
     }
 
-    public void setTimeSpent(int timeSpent) {
+    public void setTimeSpent(Integer timeSpent) {
         this.timeSpent = timeSpent;
     }
 }
