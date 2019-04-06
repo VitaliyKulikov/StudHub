@@ -4,10 +4,8 @@ import {CurrentUserService} from '../../services/current-user.service';
 
 @Component({
   selector: 'app-home',
-  template: `
-      <h3>{{ message }}</h3>
-      <img [src]="image">
-  `
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
   constructor(private http: HttpClient, private uservice: CurrentUserService) {

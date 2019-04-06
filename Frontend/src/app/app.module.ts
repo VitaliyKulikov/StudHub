@@ -12,10 +12,12 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorInterceptor} from '../interceptors/error.interceptor';
 import {ErrorSerivce} from '../services/error.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HeaderComponent} from './header/header.component';
 import {SigninComponent} from './signin.component/signin/signin.component';
 import {EventComponent} from './event/event.component'
 import {EditEventComponent} from './event/edit-event/edit-event.component'
 import {ViewEventComponent} from './event/view-event/view-event.component'
+import {CreateEventComponent} from './event/create-event/create-event.component'
 import {SignupComponent as OrganizationSignupComponent} from './organization/signup/signup.component';
 import {SignupComponent as VolunteerSignupComponent} from './organization/signup/signup.component';
 import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
@@ -34,6 +36,8 @@ import {CurrentUserService} from '../services/current-user.service';
     ViewEventComponent,
     EditEventComponent,
     NotFoundPageComponent,
+    HeaderComponent,
+    CreateEventComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
@@ -41,6 +45,7 @@ import {CurrentUserService} from '../services/current-user.service';
       { path: '', component: HomeComponent, pathMatch: 'full'},
       { path: 'events', children: [
         { path: '', component:  EventComponent },
+        { path: 'create', component:  CreateEventComponent },
         { path: ':id', component:  ViewEventComponent },
         { path: ':id/edit', component:  EditEventComponent },
       ]},
