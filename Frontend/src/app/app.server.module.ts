@@ -4,8 +4,9 @@ import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
 
 import {AppModule} from './app.module';
 import {AppComponent} from './app.component';
-import {SignupComponent} from './signup.component/signup/signup.component';
 import {SigninComponent} from './signin.component/signin/signin.component';
+import {SignupComponent as OrganizationSignupComponent} from './organization/signup/signup.component';
+import {SignupComponent as VolunteerSignupComponent} from './organization/signup/signup.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {SigninComponent} from './signin.component/signin/signin.component';
     ServerModule,
     ModuleMapLoaderModule,
     ServerTransferStateModule,
-    SignupComponent,
+    OrganizationSignupComponent,
+    VolunteerSignupComponent,
     SigninComponent,
   ],
   // Since the bootstrapped component is not inherited from your
