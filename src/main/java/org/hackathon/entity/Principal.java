@@ -10,10 +10,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 public class Principal implements UserDetails {
     @Id
-    private int id;
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
 
     @Column(name = "username", unique = true, nullable = false, length = 100)
     private String username;
@@ -40,10 +44,12 @@ public class Principal implements UserDetails {
     private String address;
 
     @Enumerated
-    private Role role;
+    private Role role = Role.VOLUNTEER;
 
     @ManyToMany
     private List<Organisation> organisations;
+
+
 
     @Override
     public String getUsername() {
@@ -80,11 +86,11 @@ public class Principal implements UserDetails {
         return Collections.emptyList();
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -10,7 +10,7 @@ public class Organisation {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private int id;
+    private long id;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -34,11 +34,11 @@ public class Organisation {
         this.image = image;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
