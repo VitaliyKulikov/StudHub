@@ -19,3 +19,8 @@ a, a:hover {
       max-width: 1440px;
   }
 }
+
+.required-asterisk:after {
+  content: '*';
+  color: red;
+}
