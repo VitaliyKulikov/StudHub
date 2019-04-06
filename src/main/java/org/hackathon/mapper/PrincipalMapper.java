@@ -1,7 +1,8 @@
-package org.hackathon;
+package org.hackathon.mapper;
 
-import org.hackathon.dto.PrincipalSignupDto;
+import org.hackathon.dto.SignupDto;
 import org.hackathon.entity.Principal;
+import org.hackathon.security.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -15,16 +16,11 @@ public class PrincipalMapper {
         this.encoder = encoder;
     }
 
-    public Principal toEntity(PrincipalSignupDto dto){
+    public Principal toEntity(SignupDto dto){
         Principal principal = new Principal();
         principal.setEmail(dto.getEmail());
         principal.setPassword(encoder.encode(dto.getPassword()));
-        principal.setName(dto.getName());
-        principal.setSurname(dto.getSurname());
-        principal.setRole(dto.getRole());
-        principal.setImage(dto.getImage());
-        principal.setBirthDate(dto.getBirthDate());
-        principal.setAddress(dto.getAddress());
+        principal.setRole(Role.VOLUNTEER);
         return principal;
     }
 }
