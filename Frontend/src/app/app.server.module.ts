@@ -5,6 +5,7 @@ import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
 import {AppModule} from './app.module';
 import {AppComponent} from './app.component';
 import {SignupComponent} from './signup.component/signup/signup.component';
+import {SigninComponent} from './signin.component/signin/signin.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {SignupComponent} from './signup.component/signup/signup.component';
     ModuleMapLoaderModule,
     ServerTransferStateModule,
     SignupComponent,
+    SigninComponent,
   ],
   // Since the bootstrapped component is not inherited from your
   // imported AppModule, it needs to be repeated here.

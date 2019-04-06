@@ -11,6 +11,7 @@ import {Component} from '@angular/core';
         <a routerLink="/lazy">Lazy-loaded Route</a>
         <a routerLink="/lazy/nested">Nested Routes work too</a>
         <a routerLink="/signup">Sign up</a>
+        <a routerLink="/signin">Sign in</a>
       </nav>
         <div class="row">
           <div class="col-md-12">

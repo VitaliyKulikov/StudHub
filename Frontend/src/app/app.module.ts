@@ -6,12 +6,14 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {TransferHttpCacheModule} from '@nguniversal/common';
 import {SignupComponent} from './signup.component/signup/signup.component';
+import {SigninComponent} from './signin.component/signin/signin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
@@ -19,7 +21,8 @@ import {SignupComponent} from './signup.component/signup/signup.component';
       { path: '', component: HomeComponent, pathMatch: 'full'},
       { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
       { path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'},
-      { path: 'signup', component: SignupComponent, pathMatch: 'full' }
+      { path: 'signup', component: SignupComponent, pathMatch: 'full' },
+      { path: 'signin', component: SigninComponent, pathMatch: 'full' },
     ]),
     TransferHttpCacheModule,
   ],
