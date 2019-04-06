@@ -4,7 +4,7 @@ import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
 
 import {AppModule} from './app.module';
 import {AppComponent} from './app.component';
-import {SignupComponent} from './signup.component/signup/Signup.component';
+import {SignupComponent} from './signup.component/signup/signup.component';
 
 @NgModule({
   imports: [
