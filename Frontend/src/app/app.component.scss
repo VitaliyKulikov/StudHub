@@ -1,6 +1,6 @@
 :host {
   background: #f1f1f1;
-  font-family: Roboto, "Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-family: 'Open Sans', "Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
   font-display: swap;
 }
 .nav-links {
@@ -18,4 +18,8 @@
 .router-container {
   border: 0.5rem #00afc4 solid;
   padding: 2rem;
+}
+
+.app-container {
+  flex: 1 0 100%;
 }

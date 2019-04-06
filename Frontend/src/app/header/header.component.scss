@@ -1,0 +1,39 @@
+header {
+  padding-top: 23px;
+  padding-bottom: 23px;
+
+  .logo {
+    height: 30px;
+    width: 63px;
+    opacity: 0.2;
+    color: #010101;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    line-height: 30px;
+  }
+
+  nav {
+    display: flex;
+
+    a {
+      display: flex;
+      position: relative;
+      font-size: 14px;
+      line-height: 30px;
+      color: #3B4044;
+      text-transform: uppercase;
+    }
+
+    a.active::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      left: 0;
+      bottom: -23px;
+      height: 4px;
+      background-color: #15A59C;
+    }
+  }
+}

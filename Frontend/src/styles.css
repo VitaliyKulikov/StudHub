@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+menu, ul, ol, p {
+  margin: 0;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.container > * {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1440px;
+  }
+}

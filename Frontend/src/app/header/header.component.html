@@ -1,9 +1,11 @@
-<menu>
-  <nav class="nav-links">
-    <a routerLink="/">Home</a>
-    <a routerLink="/organization/signup">Sign up as organization</a>
-    <a routerLink="/volunteer/signup">Sign up as volunteer</a>
-    <a routerLink="/signin">Sign in</a>
-    <a routerLink="/events">Events</a>
+<header class="row">
+  <div class="col-5 align-items-center logo"><a href="/">LOGO</a></div>
+  <nav class="col-7 nav-links justify-content-between">
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">Home</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/about-us">About us</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/organization/signup">Sign up as organization</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/volunteer/signup">Sign up as volunteer</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/events">Events</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/signin">Sign in</a>
   </nav>
-</menu>
+</header>
