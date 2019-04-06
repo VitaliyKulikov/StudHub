@@ -22,6 +22,7 @@ public class Organisation {
     private byte[] image;
 
     @ManyToMany
+    @Column(name = "members")
     private List<Principal> members;
 
     public Organisation() {
