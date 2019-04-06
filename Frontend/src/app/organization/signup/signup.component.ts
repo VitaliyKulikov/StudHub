@@ -16,6 +16,6 @@ export class SignupComponent implements OnInit {
   }
 
   submit() {
-    console.log(JSON.stringify(this.volunteerForm.value, null, 2));
+    console.log(this.volunteerForm.value);
   }
 }

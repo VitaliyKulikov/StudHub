@@ -19,11 +19,12 @@ import {EditEventComponent} from './event/edit-event/edit-event.component'
 import {ViewEventComponent} from './event/view-event/view-event.component'
 import {CreateEventComponent} from './event/create-event/create-event.component'
 import {SignupComponent as OrganizationSignupComponent} from './organization/signup/signup.component';
-import {SignupComponent as VolunteerSignupComponent} from './organization/signup/signup.component';
+import {SignupComponent as VolunteerSignupComponent} from './volunteer/signup/signup.component';
 import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
 
 import {TokenInterceptor} from '../interceptors/token.interceptor';
 import {CurrentUserService} from '../services/current-user.service';
+import {LocalStorage, LocalStorageC} from './storage';
 
 @NgModule({
   declarations: [

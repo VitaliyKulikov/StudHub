@@ -1,5 +1,6 @@
 import 'zone.js/dist/zone-node';
 import { enableProdMode } from '@angular/core';
+import * as proxy from 'express-http-proxy';
 
 // Express Engine
 import { ngExpressEngine } from '@nguniversal/express-engine';
@@ -34,6 +35,8 @@ app.set('views', join(DIST_FOLDER, 'browser'));
 
 // Example Express Rest API endpoints
 // app.get('/api/**', (req, res) => { });
+
+app.use('/proxy', proxy('localhost:8080'));
 
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser'), {
