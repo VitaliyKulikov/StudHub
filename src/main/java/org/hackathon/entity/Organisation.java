@@ -6,11 +6,7 @@ import java.util.List;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Organisation {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private long id;
+public class Organisation extends Principal{
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -22,25 +18,7 @@ public class Organisation {
     private byte[] image;
 
     @ManyToMany
-    private List<Principal> members;
-
-    public Organisation() {
-    }
-
-    public Organisation(int id, String name, String description, byte[] image) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.image = image;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private List<Volunteer> members;
 
     public String getName() {
         return name;
