@@ -2,13 +2,18 @@
     <div class="row form-group">
         <form class="col-12" #volunteerForm="ngForm" (ngSubmit)="submit()">
             <p>
-                <label for="name">Ім'я <span class="required-asterisk"></span>
-                    <input type="text" class="form-control" name="name" id="name" ngModel required [disabled]="isLoading" />
+                <label for="firstName">Ім'я <span class="required-asterisk"></span>
+                    <input type="text" class="form-control" name="firstName" id="firstName" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="sname">Прізвище<span class="required-asterisk"></span>
-                    <input type="text" class="form-control" name="sname" id="sname" ngModel required [disabled]="isLoading" />
+                <label for="patronymic">По-батькові<span class="required-asterisk"></span>
+                    <input type="text" class="form-control" name="patronymic" id="patronymic" ngModel required/>
+                </label>
+            </p>
+            <p>
+                <label for="lastName">Прізвище<span class="required-asterisk"></span>
+                    <input type="text" class="form-control" name="lastName" id="lastName" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
@@ -23,17 +28,17 @@
                 </label>
             </p>
             <p>
-                <label for="mail">Електронна адреса<span class="required-asterisk"></span>
-                    <input type="email" class="form-control" name="mail" id="mail" ngModel required [disabled]="isLoading" />
+                <label for="email">Електронна адреса<span class="required-asterisk"></span>
+                    <input type="email" class="form-control" name="email" id="email" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="mail">Пароль<span class="required-asterisk"></span>
+                <label for="password1">Пароль<span class="required-asterisk"></span>
                     <input type="password" class="form-control" name="password1" id="password1" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="mail">Повтор пароля<span class="required-asterisk"></span>
+                <label for="password2">Повтор пароля<span class="required-asterisk"></span>
                     <input type="password" class="form-control" name="password2" id="password2" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
