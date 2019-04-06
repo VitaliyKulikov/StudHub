@@ -11,7 +11,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('intercept');
         return next.handle(req).pipe(catchError((err, caught) => {
             if (err instanceof HttpErrorResponse && this.shouldBeIntercepted(err)) {
                 this.handleErrorResponce(err);
