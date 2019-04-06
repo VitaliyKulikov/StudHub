@@ -36,6 +36,8 @@ public class Organisation {
 
     private byte[] image;
 
+    private boolean confirmed = false;
+
     public String getName() {
         return name;
     }
@@ -106,5 +108,13 @@ public class Organisation {
 
     public void setPrincipal(Principal principal) {
         this.principal = principal;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
     }
 }

@@ -23,9 +23,6 @@ public class EventMembership {
     @ManyToOne
     private Event event;
 
-    @Column(name = "confirmed")
-    private boolean confirmed = false;
-
     @Column(name = "mark")
     private int mark;
 
@@ -62,14 +59,6 @@ public class EventMembership {
 
     public void setEvent(Event event) {
         this.event = event;
-    }
-
-    public boolean isConfirmed() {
-        return confirmed;
-    }
-
-    public void setConfirmed(boolean confirmed) {
-        this.confirmed = confirmed;
     }
 
     public int getMark() {
