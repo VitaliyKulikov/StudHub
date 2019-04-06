@@ -6,6 +6,11 @@ a, a:hover {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  outline: none;
+}
+
 .container {
   min-height: 100vh;
 }
@@ -14,7 +19,15 @@ a, a:hover {
   display: block;
 }
 
-@media (min-width: 1200px) {
+a.blue {
+  color: #00A3CE;
+}
+
+a.underline {
+  text-decoration: underline;
+}
+
+@media (min-width: 1440px) {
   .container {
       max-width: 1440px;
   }
