@@ -3,12 +3,12 @@
     <form class="col-12" #loginForm="ngForm" (ngSubmit)="submit()">
       <p>
         <label for="mail">Електронна адреса
-          <input type="email" class="form-control" name="mail" id="mail" ngModel required/>
+          <input type="email" class="form-control" name="mail" id="mail" ngModel required [disabled]="isLoading"/>
         </label>
       </p>
       <p>
         <label for="mail">Пароль
-          <input type="password" class="form-control" name="password" id="password" ngModel required/>
+          <input type="password" class="form-control" name="password" id="password" ngModel required [disabled]="isLoading"/>
         </label>
       </p>
       <p>

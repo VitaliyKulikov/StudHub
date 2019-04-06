@@ -25,6 +25,7 @@ import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
 import {TokenInterceptor} from '../interceptors/token.interceptor';
 import {CurrentUserService} from '../services/current-user.service';
 import {LocalStorage, LocalStorageC} from './storage';
+import {AuthService} from '../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {LocalStorage, LocalStorageC} from './storage';
   ],
   providers: [
     ErrorSerivce,
+    AuthService,
     CurrentUserService,
     {
       provide: HTTP_INTERCEPTORS,

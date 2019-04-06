@@ -59,7 +59,7 @@ export class CurrentUserService {
   }
 
   signin(credentials): Observable<any> {
-    return this.http.post<string>('token', credentials).pipe(tap(t => {
+    return this.http.post<string>('api/token', credentials).pipe(tap(t => {
       if (isPlatformBrowser(this.platformId)) {
         localStorage.setItem('token', t);
       }
