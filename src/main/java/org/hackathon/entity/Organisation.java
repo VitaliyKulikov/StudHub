@@ -18,7 +18,26 @@ public class Organisation extends Principal{
     private byte[] image;
 
     @ManyToMany
+    @Column(name = "members")
     private List<Volunteer> members;
+
+    public Organisation() {
+    }
+
+    public Organisation(int id, String name, String description, byte[] image) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
