@@ -1,20 +1,86 @@
 <div class="col-12">
-  <div class="row">
-    <form class="col-12">
-      <p><label>Ім'я<input type="text"></label></p>
-      <p><label>Прізвище<input type="text"></label></p>
-      <p><label>Дата народження<input type="text"></label></p>
-      <p><label>Контактний телефон<input type="text"></label></p>
-      <p><label>Електронна адреса<input type="text"></label></p>
-      <p><label>Посилання на Вашу сторінку у Facebook<input type="text"></label></p>
-      <p><label>Навички<input type="text"></label></p>
-      <p><label>Бажана локація<input type="text"></label></p>
-      <p><label>Досвід волонтерства<input type="text"></label></p>
-      <p><label>Frequency<input type="text"></label></p>
-      <p><label>Availabbility<input type="text"></label></p>
-      <p><label>Area of interest<input type="text"></label></p>
-      <p><label><input type="checkbox">I agree to share information</label></p>
-      <p><label><button>Sign up</button></label></p>
-    </form>
-  </div>
+    <div class="row form-group">
+        <form class="col-12" #volunteerForm="ngForm" (ngSubmit)="submit()">
+            <p>
+                <label for="name">Ім'я
+                    <input type="text" class="form-control" name="name" id="name" ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="sname">Прізвище
+                    <input type="text" class="form-control" name="sname" id="sname" ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="birthdate">Дата народження
+                    <input type="date" class="form-control" name="birthdate" id="birthdate"
+                           ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="phone">Контактний телефон
+                    <input type="tel" class="form-control" name="phone" id="phone" ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="mail">Електронна адреса
+                    <input type="email" class="form-control" name="mail" id="mail" ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="facebook-profile">Посилання на Вашу сторінку у Facebook
+                    <input type="url" class="form-control" name="facebook-profile" id="facebook-profile"
+                           ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="skills">Навички
+                    <input type="text" class="form-control" name="skills" id="skills" ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="prefered-location">Бажана локація
+                    <input type="text" class="form-control" name="prefered-location" id="prefered-location"
+                           ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="experience">Досвід волонтерства
+                    <input type="text" class="form-control" name="experience" id="experience"
+                           ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="frequency">Frequency
+                    <input type="text" class="form-control" name="frequency" id="frequency"
+                           ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="availability">Availabbility
+                    <input type="text" class="form-control" name="availability" id="availability"
+                           ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="area-of-interest">Area of interest
+                    <input type="text" class="form-control" name="area-of-interest" id="area-of-interest"
+                           ngModel/>
+                </label>
+            </p>
+            <p>
+                <label for="data-process-agreement">
+                    <input type="checkbox" name="data-process-agreement" id="data-process-agreement"
+                           ngModel/>Я погоджуюся на обробку особистих даних
+                </label>
+            </p>
+            <p>
+                <label for="register-btn">
+                    <button type="submit" name="register-btn" id="register-btn" class="btn btn-default">
+                        Зареєструватися
+                    </button>
+                </label>
+            </p>
+        </form>
+    </div>
 </div>

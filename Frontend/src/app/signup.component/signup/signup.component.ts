@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  @ViewChild('volunteerForm') volunteerForm;
+  model: any = {};
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  submit() {
+    console.log(JSON.stringify(this.volunteerForm.value, null, 2));
+  }
 }

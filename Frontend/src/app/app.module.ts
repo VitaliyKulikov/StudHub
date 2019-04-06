@@ -13,6 +13,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorInterceptor} from '../interceptors/error.interceptor';
 import {ErrorSerivce} from '../services/error.service';
 import {SigninComponent} from './signin.component/signin/signin.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,26 +25,28 @@ import {SigninComponent} from './signin.component/signin/signin.component';
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full'},
-      { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
-      { path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'},
-      { path: 'signup', component: SignupComponent, pathMatch: 'full' },
-      { path: 'signin', component: SigninComponent, pathMatch: 'full' },
+      {path: '', component: HomeComponent, pathMatch: 'full'},
+      {path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
+      {path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'},
+      {path: 'signup', component: SignupComponent, pathMatch: 'full'},
+      {path: 'signin', component: SigninComponent, pathMatch: 'full'},
     ]),
     TransferHttpCacheModule,
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
-    providers: [
-        ErrorSerivce,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ErrorInterceptor,
-            multi: true
-        }
-    ],
+  providers: [
+    ErrorSerivce,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
