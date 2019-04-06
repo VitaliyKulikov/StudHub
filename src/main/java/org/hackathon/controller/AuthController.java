@@ -53,13 +53,13 @@ public class AuthController {
 
         final Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        loginUser.getLogin(),
+                        loginUser.getEmail(),
                         loginUser.getPassword()
                 )
         );
 
         SecurityContextHolder.getContext().setAuthentication(auth);
         final String token = jwtTokenUtil.generateToken(auth);
-        return ResponseEntity.ok(securityProperties.getPrefix() + token);
+        return ResponseEntity.ok(token);
     }
 }
