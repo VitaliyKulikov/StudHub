@@ -1,10 +1,19 @@
 import {Injectable} from '@angular/core';
-import {IUser, Role} from '../shared/model/IUser';
-import {Observable} from 'rxjs';
+import {IUser, IUserToken, Role} from '../shared/model/IUser';
+import {Observable, Subject} from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {tap} from 'rxjs/internal/operators/tap';
 
 @Injectable()
 export class CurrentUserService {
+  private onUserChangeSubs: ((IUser) => any)[] = [];
+
+  constructor(private http: HttpClient, private router: Router) {
+
+  }
+
   getCurrentUser(): Observable<IUser> {
     return new Observable(subscriber => {
 
@@ -16,8 +25,13 @@ export class CurrentUserService {
           username: ''
         });
       } else {
-        const decoded: IUser = jwt_decode(token);
-        subscriber.next(decoded);
+        const decoded: IUserToken = jwt_decode(token);
+        if (new Date().getUTCDate() - decoded.exp * 1000 >= 0) {
+          subscriber.next(decoded);
+        } else {
+          this.logout();
+          subscriber.complete();
+        }
       }
     });
   }
@@ -33,9 +47,35 @@ export class CurrentUserService {
 
   logout() {
     localStorage.removeItem('token');
+    this.notifyUserChange();
   }
 
-  private requestUserInfo() {
-    // TODO: login request.
+  signin(credentials): Observable<any> {
+    return this.http.post<string>('token', credentials).pipe(tap(t => {
+      localStorage.setItem('token', t);
+      this.notifyUserChange();
+    }));
+  }
+
+  setOnUserChange(fn: (IUser) => any) {
+    this.onUserChangeSubs.push(fn);
+  }
+
+  private notifyUserChange() {
+    this.onUserChangeSubs.forEach(u => u(this.getUser()));
+  }
+
+  private getUser() {
+    const token = this.getToken();
+    let user;
+
+    if (this.getToken() == null) {
+      user = {
+        role: Role.Anonymous,
+        username: ''
+      };
+    } else {
+      user = jwt_decode(token);
+    }
   }
 }
