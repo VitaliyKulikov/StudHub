@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,15 +8,20 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class SignupComponent implements OnInit {
   @ViewChild('volunteerForm') volunteerForm;
-  model: any = {};
+  isLoading = false;
 
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
   }
 
-  submit() {
-    console.log(this.volunteerForm.value);
+  async submit() {
+    this.isLoading = true;
+    try {
+      await this.authService.signin(this.volunteerForm.value).toPromise();
+    } finally {
+      this.isLoading = false;
+    }
   }
 }
