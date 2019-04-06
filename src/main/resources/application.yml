@@ -10,5 +10,10 @@ spring:
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
+          auto: create-drop
         dialect: org.hibernate.dialect.PostgreSQLDialect
+auth:
+  secret: a=l1t13.ama21ng_h0rs3;
+  expiration: 86_400_000
+  prefix: Bearer
+  headerString: Authorization

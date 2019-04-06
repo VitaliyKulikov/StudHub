@@ -19,10 +19,7 @@ public class Principal implements UserDetails {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "username", unique = true, nullable = false, length = 100)
-    private String username;
-
-    @Column(name = "password", nullable = false, length = 50)
+    @Column(name = "password", nullable = false, length = 1000)
     private String password;
 
     @Column(name = "email", unique = true, nullable = false, length = 300)
@@ -44,14 +41,14 @@ public class Principal implements UserDetails {
     private String address;
 
     @Enumerated
-    private Role role = Role.VOLUNTEER;
+    private Role role;
 
     @ManyToMany
     private List<Organisation> organisations;
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
@@ -66,7 +63,7 @@ public class Principal implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
@@ -90,10 +87,6 @@ public class Principal implements UserDetails {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public void setPassword(String password) {
