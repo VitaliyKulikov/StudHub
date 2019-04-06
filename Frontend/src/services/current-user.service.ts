@@ -1,16 +1,19 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {IUser, IUserToken, Role} from '../shared/model/IUser';
 import {Observable, Subject} from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/internal/operators/tap';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class CurrentUserService {
   private onUserChangeSubs: ((IUser) => any)[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient,
+              private router: Router,
+              @Inject(PLATFORM_ID) private platformId: Object) {
 
   }
 
@@ -37,7 +40,10 @@ export class CurrentUserService {
   }
 
   getToken(): string {
-    let token = localStorage.getItem('token');
+    let token;
+    if (isPlatformBrowser(this.platformId)) {
+       token = localStorage.getItem('token');
+    }
     if (!token) {
       token = null;
     }
@@ -46,13 +52,17 @@ export class CurrentUserService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+    }
     this.notifyUserChange();
   }
 
   signin(credentials): Observable<any> {
     return this.http.post<string>('token', credentials).pipe(tap(t => {
-      localStorage.setItem('token', t);
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('token', t);
+      }
       this.notifyUserChange();
     }));
   }
@@ -77,5 +87,7 @@ export class CurrentUserService {
     } else {
       user = jwt_decode(token);
     }
+
+    return user;
   }
 }
