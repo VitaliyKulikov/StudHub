@@ -1,6 +1,7 @@
 package org.hackathon.entity;
 
 import org.hackathon.security.Role;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +20,7 @@ public class Principal implements UserDetails {
     private long id;
 
     @Column(nullable = false, length = 1000)
+    @RestResource(exported = false)
     private String password;
 
     @Column(unique = true, nullable = false, length = 300)

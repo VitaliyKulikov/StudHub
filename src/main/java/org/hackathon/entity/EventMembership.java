@@ -1,5 +1,7 @@
 package org.hackathon.entity;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -18,19 +20,22 @@ public class EventMembership {
     private Volunteer volunteer;
 
     @ManyToOne
-    private Organisation owner;
-
-    @ManyToOne
     private Event event;
 
+    @RestResource(exported = false)
     @Column(name = "mark")
     @Max(5)
     @Min(0)
     @NotNull
     private Integer mark;
 
-    @Column(name = "timeSpent")
-    private Integer timeSpent;
+    @RestResource(exported = false)
+    private boolean participationConfirmed = false;
+
+    @RestResource(exported = false)
+    private int timeSpent;
+
+
 
     public Volunteer getVolunteer() {
         return volunteer;
@@ -38,14 +43,6 @@ public class EventMembership {
 
     public void setVolunteer(Volunteer volunteer) {
         this.volunteer = volunteer;
-    }
-
-    public Organisation getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Organisation owner) {
-        this.owner = owner;
     }
 
     public Event getEvent() {
@@ -70,5 +67,21 @@ public class EventMembership {
 
     public void setTimeSpent(Integer timeSpent) {
         this.timeSpent = timeSpent;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public boolean isParticipationConfirmed() {
+        return participationConfirmed;
+    }
+
+    public void setParticipationConfirmed(boolean participationConfirmed) {
+        this.participationConfirmed = participationConfirmed;
     }
 }

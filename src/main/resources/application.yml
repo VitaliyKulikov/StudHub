@@ -10,7 +10,7 @@ spring:
     properties:
       hibernate:
         hbm2ddl:
-          auto: create-drop
+          auto: update
         dialect: org.hibernate.dialect.PostgreSQLDialect
 auth:
   secret: a=l1t13.ama21ng_h0rs3;
