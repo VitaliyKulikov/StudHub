@@ -32,6 +32,9 @@ public class Event {
     @JoinColumn(name = "owner", nullable = false)
     private Organisation owner;
 
+    @Column(nullable = false)
+    private byte[] image;
+
     public long getId() {
         return id;
     }
@@ -78,5 +81,13 @@ public class Event {
 
     public void setIssuer(Principal issuer) {
         this.issuer = issuer;
+    }
+
+    public Organisation getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Organisation owner) {
+        this.owner = owner;
     }
 }

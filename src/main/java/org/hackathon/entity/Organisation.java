@@ -6,7 +6,14 @@ import java.util.List;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Organisation extends Principal{
+public class Organisation {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(unique = true, nullable = false)
+    private long id;
+
+    @OneToOne
+    private Principal principal;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -14,30 +21,20 @@ public class Organisation extends Principal{
     @Column(name = "description", length = 1500)
     private String description;
 
-    @Column(name = "image")
-    private byte[] image;
+    @Column(nullable = false, length = 100)
+    private String firstName;
+
+    @Column(nullable = false, length = 100)
+    private String lastName;
+
+    @Column(nullable = false, length = 100)
+    private String url;
 
     @ManyToMany
     @Column(name = "members")
     private List<Volunteer> members;
 
-    public Organisation() {
-    }
-
-    public Organisation(int id, String name, String description, byte[] image) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.image = image;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private byte[] image;
 
     public String getName() {
         return name;
@@ -61,5 +58,53 @@ public class Organisation extends Principal{
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public List<Volunteer> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Volunteer> members) {
+        this.members = members;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Principal getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(Principal principal) {
+        this.principal = principal;
     }
 }
