@@ -1,0 +1,23 @@
+.page-home {
+  padding-top: 22.5vh;
+  
+  h1 {
+    margin-bottom: 50px;
+    color: #35353B;
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 84px;
+  }
+  
+  h1 + p {
+    color: #000000;
+    font-size: 16px;
+    line-height: 1.8em;
+  }
+
+  .banner {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}

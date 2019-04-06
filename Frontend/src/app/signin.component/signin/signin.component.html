@@ -1,0 +1,23 @@
+<div class="col-12">
+  <div class="row form-group">
+    <form class="col-12" #loginForm="ngForm" (ngSubmit)="submit()">
+      <p>
+        <label for="mail">Електронна адреса
+          <input type="email" class="form-control" name="mail" id="mail" ngModel required [disabled]="isLoading"/>
+        </label>
+      </p>
+      <p>
+        <label for="mail">Пароль
+          <input type="password" class="form-control" name="password" id="password" ngModel required [disabled]="isLoading"/>
+        </label>
+      </p>
+      <p>
+        <label for="register-btn">
+          <button type="submit" name="register-btn" id="register-btn" class="btn btn-default">
+            Ввійти
+          </button>
+        </label>
+      </p>
+    </form>
+  </div>
+</div>

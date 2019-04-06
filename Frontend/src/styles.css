@@ -1,0 +1,26 @@
+menu, ul, ol, p {
+  margin: 0;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.container > * {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1440px;
+  }
+}
+
+.required-asterisk:after {
+  content: '*';
+  color: red;
+}
