@@ -11,14 +11,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PrincipalService implements UserDetailsService {
-
     private final PrincipalRepository principalRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public PrincipalService(PrincipalRepository principalRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public PrincipalService(PrincipalRepository principalRepository) {
         this.principalRepository = principalRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
