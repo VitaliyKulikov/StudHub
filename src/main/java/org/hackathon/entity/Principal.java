@@ -31,7 +31,7 @@ public class Principal implements UserDetails {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "surname", nullable = false, length = 100)
     private String surname;
 
     @Column(name = "image")

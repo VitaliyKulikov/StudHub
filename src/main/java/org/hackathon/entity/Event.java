@@ -24,8 +24,8 @@ public class Event {
     @Column(name = "address", unique = true, nullable = false)
     private String location;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "issuer", nullable = false)
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "issuer", nullable = false)
     private Principal issuer;
 
     public long getId() {
