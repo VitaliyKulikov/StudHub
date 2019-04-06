@@ -15,6 +15,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SigninComponent} from './signin.component/signin/signin.component';
 import {SignupComponent as OrganizationSignupComponent} from './organization/signup/signup.component';
 import {SignupComponent as VolunteerSignupComponent} from './organization/signup/signup.component';
+import {TokenInterceptor} from '../interceptors/token.interceptor';
+import {CurrentUserService} from '../services/current-user.service';
 
 @NgModule({
   declarations: [
@@ -52,9 +54,15 @@ import {SignupComponent as VolunteerSignupComponent} from './organization/signup
   ],
   providers: [
     ErrorSerivce,
+    CurrentUserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true
     }
   ],
