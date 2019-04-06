@@ -1,4 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {CurrentUserService} from '../../../services/current-user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -7,12 +9,22 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class SigninComponent implements OnInit {
   @ViewChild('loginForm') loginForm;
-  constructor() { }
+  isLoading = false;
+
+  constructor(private currentUserService: CurrentUserService,
+              private router: Router) {
+  }
 
   ngOnInit() {
   }
 
-  submit() {
-    console.log(JSON.stringify(this.loginForm.value, null, 2));
+  async submit() {
+    this.isLoading = true;
+    try {
+      await this.currentUserService.signin(this.loginForm.value).toPromise();
+      this.router.navigate(['home']);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }
