@@ -21,7 +21,7 @@ public class PrincipalMapper {
     public Principal toEntity(SignupDto dto){
         Principal principal = new Principal();
         principal.setEmail(dto.getEmail());
-        principal.setPassword(encoder.encode(dto.getPassword()));
+        principal.setPassword(encoder.encode(dto.getPassword1()));
         principal.setRole(ROLE_VOLUNTEER);
         return principal;
     }

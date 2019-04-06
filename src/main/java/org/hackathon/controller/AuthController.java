@@ -24,6 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
+import javax.validation.ValidationException;
+
 @Controller
 public class AuthController {
     private final PrincipalService service;
@@ -51,7 +54,12 @@ public class AuthController {
 
     @PostMapping("/api/user-signup")
     @Transactional
-    public ResponseEntity registerUser(@RequestBody VolunteerSignupDto user) {
+    public ResponseEntity registerUser(@RequestBody @Valid VolunteerSignupDto user) {
+
+        if (!user.getPassword1().equals(user.getPassword2())) {
+            throw new ValidationException("Passwords must match");
+        }
+
         Volunteer volunteer = volunteerMapper.toEntity(user);
         Principal principal = principalMapper.toEntity(user);
         principalRepository.save(principal);
@@ -60,12 +68,12 @@ public class AuthController {
     }
 
     @PostMapping("/api/organisation-signup")
-    public ResponseEntity registerOrganisation(@RequestBody VolunteerSignupDto user) {
+    public ResponseEntity registerOrganisation(@RequestBody @Valid VolunteerSignupDto user) {
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/api/token")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginUser) throws AuthenticationException {
+    public ResponseEntity<String> login(@RequestBody @Valid LoginDto loginUser) throws AuthenticationException {
 
         final Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
