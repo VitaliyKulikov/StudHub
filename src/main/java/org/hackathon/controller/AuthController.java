@@ -49,7 +49,7 @@ public class AuthController {
         this.principalMapper = principalMapper;
     }
 
-    @PostMapping("/user-signup")
+    @PostMapping("/api/user-signup")
     @Transactional
     public ResponseEntity registerUser(@RequestBody VolunteerSignupDto user) {
         Volunteer volunteer = volunteerMapper.toEntity(user);
@@ -59,12 +59,12 @@ public class AuthController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/organisation-signup")
+    @PostMapping("/api/organisation-signup")
     public ResponseEntity registerOrganisation(@RequestBody VolunteerSignupDto user) {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/token")
+    @PostMapping("/api/token")
     public ResponseEntity<String> login(@RequestBody LoginDto loginUser) throws AuthenticationException {
 
         final Authentication auth = authenticationManager.authenticate(
