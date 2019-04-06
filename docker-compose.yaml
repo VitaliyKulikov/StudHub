@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    image: org.kind-hack/volunteer_hub
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    volumes:
+      - .:/home/gradle/src
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+  db:
+    image: postgres:9.5
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=volunteerhub
+    ports:
+      - 5432:5432

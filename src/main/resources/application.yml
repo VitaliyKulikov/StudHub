@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/volunteerhub
+    username: postgres
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+auth:
+  secret: a=l1t13.ama21ng_h0rs3;
+  expiration: 86_400_000
+  prefix: Bearer
+  headerString: Authorization
