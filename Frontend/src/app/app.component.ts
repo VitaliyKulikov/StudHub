@@ -8,11 +8,10 @@ import {Component} from '@angular/core';
       <h1>Angular Universal Demo utilizing Angular & Angular CLI</h1>
       <nav class="nav-links">
         <a routerLink="/">Home</a>
-        <a routerLink="/lazy">Lazy-loaded Route</a>
-        <a routerLink="/lazy/nested">Nested Routes work too</a>
         <a routerLink="/organization/signup">Sign up as organization</a>
         <a routerLink="/volunteer/signup">Sign up as volunteer</a>
         <a routerLink="/signin">Sign in</a>
+        <a routerLink="/events">Events</a>
       </nav>
         <div class="row">
           <div class="col-md-12">

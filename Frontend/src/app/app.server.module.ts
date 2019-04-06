@@ -7,6 +7,10 @@ import {AppComponent} from './app.component';
 import {SigninComponent} from './signin.component/signin/signin.component';
 import {SignupComponent as OrganizationSignupComponent} from './organization/signup/signup.component';
 import {SignupComponent as VolunteerSignupComponent} from './organization/signup/signup.component';
+import {EventComponent} from './event/event.component'
+import {EditEventComponent} from './event/edit-event/edit-event.component'
+import {ViewEventComponent} from './event/view-event/view-event.component'
+import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
 
 @NgModule({
   imports: [
@@ -19,6 +23,10 @@ import {SignupComponent as VolunteerSignupComponent} from './organization/signup
     OrganizationSignupComponent,
     VolunteerSignupComponent,
     SigninComponent,
+    EventComponent,
+    EditEventComponent,
+    ViewEventComponent,
+    NotFoundPageComponent
   ],
   // Since the bootstrapped component is not inherited from your
   // imported AppModule, it needs to be repeated here.
