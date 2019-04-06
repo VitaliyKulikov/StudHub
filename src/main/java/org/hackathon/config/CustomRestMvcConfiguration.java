@@ -9,15 +9,15 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapt
 @Configuration
 class CustomRestMvcConfiguration {
 
-  @Bean
-  public RepositoryRestConfigurer repositoryRestConfigurer() {
+    @Bean
+    public RepositoryRestConfigurer repositoryRestConfigurer() {
 
-    return new RepositoryRestConfigurerAdapter() {
+        return new RepositoryRestConfigurerAdapter() {
 
-      @Override
-      public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-        config.setBasePath("/api");
-      }
-    };
-  }
+            @Override
+            public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+                config.setBasePath("/api");
+            }
+        };
+    }
 }
