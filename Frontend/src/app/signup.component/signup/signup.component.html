@@ -3,33 +3,33 @@
         <form class="col-12" #volunteerForm="ngForm" (ngSubmit)="submit()">
             <p>
                 <label for="name">Ім'я
-                    <input type="text" class="form-control" name="name" id="name" ngModel/>
+                    <input type="text" class="form-control" name="name" id="name" ngModel required/>
                 </label>
             </p>
             <p>
                 <label for="sname">Прізвище
-                    <input type="text" class="form-control" name="sname" id="sname" ngModel/>
+                    <input type="text" class="form-control" name="sname" id="sname" ngModel required/>
                 </label>
             </p>
             <p>
                 <label for="birthdate">Дата народження
                     <input type="date" class="form-control" name="birthdate" id="birthdate"
-                           ngModel/>
+                           ngModel required/>
                 </label>
             </p>
             <p>
                 <label for="phone">Контактний телефон
-                    <input type="tel" class="form-control" name="phone" id="phone" ngModel/>
+                    <input type="tel" class="form-control" name="phone" id="phone" ngModel required/>
                 </label>
             </p>
             <p>
                 <label for="mail">Електронна адреса
-                    <input type="email" class="form-control" name="mail" id="mail" ngModel/>
+                    <input type="email" class="form-control" name="mail" id="mail" ngModel required/>
                 </label>
             </p>
             <p>
                 <label for="facebook-profile">Посилання на Вашу сторінку у Facebook
-                    <input type="url" class="form-control" name="facebook-profile" id="facebook-profile"
+                    <input type="url" class="form-control" name="facebookProfile" id="facebook-profile"
                            ngModel/>
                 </label>
             </p>
@@ -40,7 +40,7 @@
             </p>
             <p>
                 <label for="prefered-location">Бажана локація
-                    <input type="text" class="form-control" name="prefered-location" id="prefered-location"
+                    <input type="text" class="form-control" name="preferedLocation" id="prefered-location"
                            ngModel/>
                 </label>
             </p>
@@ -64,13 +64,13 @@
             </p>
             <p>
                 <label for="area-of-interest">Area of interest
-                    <input type="text" class="form-control" name="area-of-interest" id="area-of-interest"
+                    <input type="text" class="form-control" name="areaOfInterest" id="area-of-interest"
                            ngModel/>
                 </label>
             </p>
             <p>
                 <label for="data-process-agreement">
-                    <input type="checkbox" name="data-process-agreement" id="data-process-agreement"
+                    <input type="checkbox" name="dataProcessAgreement" id="data-process-agreement"
                            ngModel/>Я погоджуюся на обробку особистих даних
                 </label>
             </p>
