@@ -24,14 +24,12 @@ public class Event {
     @Column(name = "address", unique = true, nullable = false)
     private String location;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "issuer", nullable = false)
-    @Column(name = "issuer", nullable = false, length = 100)
     private Principal issuer;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner", nullable = false)
-    @Column(name = "owner_organisation")
     private Organisation owner;
 
     public long getId() {

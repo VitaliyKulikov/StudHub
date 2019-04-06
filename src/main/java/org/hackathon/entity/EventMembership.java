@@ -1,25 +1,26 @@
 package org.hackathon.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 public class EventMembership {
-    @OneToMany
-    @Column(name = "volunteer", nullable = false)
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+
+    @ManyToOne
     private Principal volunteer;
 
-    @OneToMany
-    @Column(name = "validator", nullable = false)
+    @ManyToOne
     private Principal validator;
 
-    @OneToMany
-    @Column(name = "owner_organisation", nullable = false)
+    @ManyToOne
     private Organisation owner;
 
-    @OneToMany
-    @Column(name = "event", nullable = false)
+    @ManyToOne
     private Event event;
 
     @Column(name = "confirmed")
