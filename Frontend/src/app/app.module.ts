@@ -21,8 +21,17 @@ import {SigninComponent} from './signin.component/signin/signin.component';
       { path: '', component: HomeComponent, pathMatch: 'full'},
       { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
       { path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'},
-      { path: 'signup', component: SignupComponent, pathMatch: 'full' },
       { path: 'signin', component: SigninComponent, pathMatch: 'full' },
+      { path: 'organization', children: [
+        { path: '', redirectTo: '/', pathMatch: 'full' },
+        { path: 'signup', component:  SignupComponent },
+        { path: ':id', component:  SignupComponent },
+      ]},
+      { path: 'volunteer', children: [
+        { path: '', redirectTo: '/', pathMatch: 'full' },
+        { path: 'signup', component:  SignupComponent },
+        { path: ':id', component:  SignupComponent },
+      ]},
     ]),
     TransferHttpCacheModule,
   ],
