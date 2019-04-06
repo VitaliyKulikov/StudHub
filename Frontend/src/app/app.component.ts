@@ -9,6 +9,7 @@ import {Component} from '@angular/core';
       <a routerLink="/">Home</a>
       <a routerLink="/lazy">Lazy-loaded Route</a>
       <a routerLink="/lazy/nested">Nested Routes work too</a>
+      <a routerLink="/signup">Sign up</a>
     </nav>
     <div class="router-container">
       <router-outlet></router-outlet>
