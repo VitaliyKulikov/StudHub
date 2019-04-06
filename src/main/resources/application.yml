@@ -1,7 +1,14 @@
 server:
   port: 8080
-database:
-  port: 5432
-  user: postgres
-  password: password
-  name: test
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/
+    username: postgres
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.PostgreSQLDialect
