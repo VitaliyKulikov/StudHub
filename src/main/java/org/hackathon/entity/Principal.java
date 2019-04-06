@@ -2,6 +2,7 @@ package org.hackathon.entity;
 
 import org.hackathon.security.Role;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -58,7 +59,7 @@ public class Principal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+        return Collections.singletonList(new SimpleGrantedAuthority(role.name()));
     }
 
     public long getId() {

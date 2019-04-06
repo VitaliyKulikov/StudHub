@@ -1,7 +1,7 @@
 package org.hackathon.security;
 
 public enum Role {
-    ADMIN,
-    VOLUNTEER,
-    ORGANISATION
+    ROLE_ADMIN,
+    ROLE_VOLUNTEER,
+    ROLE_ORGANISATION
 }

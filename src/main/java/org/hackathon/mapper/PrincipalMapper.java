@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import static org.hackathon.security.Role.ROLE_VOLUNTEER;
+
 @Component
 public class PrincipalMapper {
     private BCryptPasswordEncoder encoder;
@@ -20,7 +22,7 @@ public class PrincipalMapper {
         Principal principal = new Principal();
         principal.setEmail(dto.getEmail());
         principal.setPassword(encoder.encode(dto.getPassword()));
-        principal.setRole(Role.VOLUNTEER);
+        principal.setRole(ROLE_VOLUNTEER);
         return principal;
     }
 }
