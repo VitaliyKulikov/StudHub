@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EventService} from '../../services/event.service';
 import {IEvent} from '../../shared/model/IEvent';
 import {CurrentUserService} from '../../services/current-user.service';
-import {Role} from '../../shared/model/IUser';
+import {Role, IUser} from '../../shared/model/IUser';
 
 @Component({
   selector: 'app-events',
@@ -14,6 +14,7 @@ export class EventComponent implements OnInit {
   myEvents: IEvent[] = [];
   rawEvents: IEvent[] = [];
   currentRole: string = Role.Anonymous;
+  user: IUser;
   searchTerm = '';
   isLoading = false;
   isShowMyLimited = true;
@@ -26,7 +27,9 @@ export class EventComponent implements OnInit {
     this.isLoading = true;
     try {
       this.rawEvents = await this.eventService.get().toPromise();
-      this.currentRole = this.currentUser.getCurrentUserNoPromise().role;
+      this.user = this.currentUser.getCurrentUserNoPromise();
+
+      this.currentRole = this.user.role;
       this.filter();
     } finally {
       this.isLoading = false;
@@ -56,10 +59,10 @@ export class EventComponent implements OnInit {
   filter() {
     if (!this.searchTerm) {
       this.events = this.rawEvents;
-      this.myEvents = this.rawEvents;
+      this.myEvents = this.rawEvents.filter(e=>e.owner.id == this.user.id);
     } else {
       this.events = this.events.filter(e => e.name.indexOf(this.searchTerm) !== -1);
-      this.myEvents = this.events.filter(e => e.name.indexOf(this.searchTerm) !== -1);
+      this.myEvents = this.events.filter(e => e.name.indexOf(this.searchTerm) !== -1 && e.owner.id==this.user.id);
     }
   }
 }

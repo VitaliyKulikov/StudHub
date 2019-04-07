@@ -23,20 +23,23 @@ export class CurrentUserService {
     if (this.getToken() == null) {
       return {
         role: Role.Anonymous,
-        username: ''
+        username: '',
+        id: 0
       };
     } else {
       const decoded: IUserToken = jwt_decode(token);
       if (new Date().getTime() - decoded.exp * 1000 <= 0) {
         return {
           username: decoded.iss,
-          role: decoded.role
+          role: decoded.role,
+          id: decoded.sub
         };
       } else {
         this.logout();
         return {
           role: Role.Anonymous,
-          username: ''
+          username: '',
+          id: 0
         };
       }
     }
@@ -50,14 +53,16 @@ export class CurrentUserService {
       if (this.getToken() == null) {
         subscriber.next({
           role: Role.Anonymous,
-          username: ''
+          username: '',
+          id: 0
         });
       } else {
         const decoded: IUserToken = jwt_decode(token);
         if (new Date().getTime() - decoded.exp * 1000 <= 0) {
           subscriber.next({
             username: decoded.iss,
-            role: decoded.role
+            role: decoded.role,
+            id: decoded.sub
           });
         } else {
           this.logout();

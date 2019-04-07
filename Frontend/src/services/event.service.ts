@@ -12,7 +12,7 @@ export class EventService {
 
   get(): Observable<IEvent[]> {
     return this.http.get('api/events').pipe(map(resp => {
-      return resp['_embedded'].events;
+      return resp['_embedded'].eventDtoes;
     }));
   }
 }

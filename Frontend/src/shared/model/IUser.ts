@@ -1,6 +1,7 @@
 export interface IUser {
   username: string;
   role: string;
+  id: number;
 }
 
 export interface IUserToken {
@@ -8,6 +9,7 @@ export interface IUserToken {
   iat: number;
   role: string;
   iss: string;
+  sub: number;
 }
 
 export enum Role {

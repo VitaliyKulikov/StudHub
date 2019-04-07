@@ -4,5 +4,5 @@ export interface IEvent {
   endDate: string;
   description: string;
   location: string;
-  owner: string;
+  owner: {id:number, name:string};
 }
