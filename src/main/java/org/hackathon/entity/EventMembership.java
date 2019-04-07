@@ -34,8 +34,6 @@ public class EventMembership {
     @RestResource(exported = false)
     private int timeSpent;
 
-
-
     public Volunteer getVolunteer() {
         return volunteer;
     }

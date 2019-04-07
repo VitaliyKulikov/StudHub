@@ -13,7 +13,10 @@ public class Event {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(name = "name", nullable = false, length = 200)
+    private String name;
+
+    @Column(name = "start_date", unique = true, nullable = false)
     private LocalDateTime startDate;
 
     @Column(name = "end_date", nullable = false)
@@ -41,6 +44,14 @@ public class Event {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDateTime getStartDate() {
