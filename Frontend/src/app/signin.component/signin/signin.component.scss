@@ -1,0 +1,57 @@
+.page-signin {
+  padding-top: 14vh;
+  
+  h2 {
+    margin-bottom: 50px;
+    color: #35353B;
+    font-size: 58px;
+    font-weight: bold;
+    line-height: 84px;
+  }
+
+  .banner {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      display: block;
+      margin-bottom: 32px;
+
+      span {
+        display: block;
+        padding-bottom: 16px;
+        color: #4F4F4F;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.1em;
+      }
+
+      input[type=text],
+      input[type=password],
+      input[type=email] {
+        width: 100%;
+        border: 1px solid #D9DDE2;
+        border-radius: 4px;
+      }
+
+      button {
+        display: block;
+        margin: 0 0 0 auto;
+        padding: 10px 32px;
+        min-width: 146px;
+        border-radius: 6px;
+        border: none;
+        color: #0099FF;
+        font-size: 20px;
+        font-weight: 600;
+        background-color: #BBE4FF;
+      }
+    }
+  }
+}

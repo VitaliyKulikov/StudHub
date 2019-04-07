@@ -9,7 +9,7 @@
         <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/contact">Контакти</a>
         <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/f-a-q">F.A.Q</a>
         <ng-container *ngIf="!user || user.role == 'Anonymous'">
-            <a class="signin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" href="/signin">
+            <a class="signin" routerLink="/signin">
                 <i class="fas fa-user-alt"></i>
                 Увійти
             </a>
