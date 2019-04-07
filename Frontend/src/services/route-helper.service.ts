@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {filter, map, shareReplay} from 'rxjs/internal/operators';
 
 const blackRoutes = [
-  '/events'
 ];
 
 const blackHeaderRoute = [
