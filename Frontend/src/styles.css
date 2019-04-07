@@ -1,4 +1,4 @@
-menu, ul, ol, p, h1, h2, h3, h4, h5, h6 {
+menu, ul, ol, p, h1, h2, h3, h4, h5, h6, label {
     margin: 0;
 }
 
@@ -26,7 +26,7 @@ button, button:active {
 }
 
 a.blue {
-    color: #00A3CE;
+    color: #0793E4;
 }
 
 a.underline {
