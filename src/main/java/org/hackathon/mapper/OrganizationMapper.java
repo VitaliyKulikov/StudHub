@@ -9,12 +9,12 @@ public class OrganizationMapper {
 
     public Organisation toEntity(OrganisationSignupDto dto) {
 
-        Organisation volunteer = new Organisation();
-        volunteer.setFirstName(dto.getFirstName());
-        volunteer.setLastName(dto.getLastName());
-        volunteer.setImage(dto.getImage());
-        volunteer.setName(dto.getFirstName());
-        volunteer.setUrl(dto.getWebpageReference());
-        return volunteer;
+        Organisation org = new Organisation();
+        org.setFirstName(dto.getFirstName());
+        org.setLastName(dto.getLastName());
+        org.setImage(dto.getImage());
+        org.setName(dto.getOrgName());
+        org.setUrl(dto.getWebpageReference());
+        return org;
     }
 }
