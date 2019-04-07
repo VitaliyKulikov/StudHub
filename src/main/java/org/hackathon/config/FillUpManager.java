@@ -210,6 +210,7 @@ public class FillUpManager {
             event.setStartDate(eventStart.get(i));
             event.setEndDate(eventEnd.get(i));
             event.setImage(new byte[]{1});
+            eventRepository.save(event);
         }
     }
 }
