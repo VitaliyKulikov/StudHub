@@ -17,8 +17,33 @@ export class CurrentUserService {
 
   }
 
+  getCurrentUserNoPromise(): IUser {
+    const token = this.getToken();
+
+    if (this.getToken() == null) {
+      return {
+        role: Role.Anonymous,
+        username: ''
+      };
+    } else {
+      const decoded: IUserToken = jwt_decode(token);
+      if (new Date().getTime() - decoded.exp * 1000 <= 0) {
+        return {
+          username: decoded.iss,
+          role: decoded.role
+        };
+      } else {
+        this.logout();
+        return {
+          role: Role.Anonymous,
+          username: ''
+        };
+      }
+    }
+  }
+
   getCurrentUser(): Observable<IUser> {
-    return new Observable(subscriber => {
+    return new Observable<IUser>(subscriber => {
 
       const token = this.getToken();
 
@@ -29,8 +54,11 @@ export class CurrentUserService {
         });
       } else {
         const decoded: IUserToken = jwt_decode(token);
-        if (new Date().getUTCDate() - decoded.exp * 1000 >= 0) {
-          subscriber.next(decoded);
+        if (new Date().getTime() - decoded.exp * 1000 <= 0) {
+          subscriber.next({
+            username: decoded.iss,
+            role: decoded.role
+          });
         } else {
           this.logout();
           subscriber.complete();
@@ -42,7 +70,7 @@ export class CurrentUserService {
   getToken(): string {
     let token;
     if (isPlatformBrowser(this.platformId)) {
-       token = localStorage.getItem('token');
+      token = localStorage.getItem('token');
     }
     if (!token) {
       token = null;
@@ -71,23 +99,12 @@ export class CurrentUserService {
     this.onUserChangeSubs.push(fn);
   }
 
-  private notifyUserChange() {
-    this.onUserChangeSubs.forEach(u => u(this.getUser()));
+  unsubscribeAll() {
+    // temporary solution.
+    this.onUserChangeSubs = [];
   }
 
-  private getUser() {
-    const token = this.getToken();
-    let user;
-
-    if (this.getToken() == null) {
-      user = {
-        role: Role.Anonymous,
-        username: ''
-      };
-    } else {
-      user = jwt_decode(token);
-    }
-
-    return user;
+  private notifyUserChange() {
+    this.onUserChangeSubs.forEach(u => u(this.getCurrentUserNoPromise()));
   }
 }
