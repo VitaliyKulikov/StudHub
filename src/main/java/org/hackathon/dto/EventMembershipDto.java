@@ -12,7 +12,6 @@ public class EventMembershipDto {
     private Integer eventId;
     @PositiveOrZero
     @Max(5)
-    @NotNull
     private Integer rate;
     @PositiveOrZero
     @NotNull

@@ -1,6 +1,11 @@
 package org.hackathon.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class OrganisationSignupDto extends SignupDto {
+
+    @NotBlank
+    protected String orgName;
 
     private String description;
 
