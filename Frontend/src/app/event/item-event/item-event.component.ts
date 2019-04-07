@@ -16,12 +16,7 @@ export class ItemEventComponent implements OnInit {
   }
 
   shrink(description: string) {
-    const splited = description.split(' ');
-    const sliced = splited.slice(0, 10);
-    if (sliced.length < splited.length) {
-      sliced.push('...');
-    }
 
-    return sliced.join(' ');
+    return (description.length > 150) ? description.substr(0, 147) + '..' : description;
   }
 }
