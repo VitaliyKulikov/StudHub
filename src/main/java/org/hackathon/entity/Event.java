@@ -22,7 +22,7 @@ public class Event {
     @Column(name = "end_date", nullable = false)
     private LocalDateTime endDate;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 4000)
     private String description;
 
     @Column(name = "address", nullable = false)
