@@ -34,8 +34,9 @@ import java.util.stream.Collectors;
 @RestController
 public class VolunteerExtendedController {
 
-    private VolunteerRepository volunteerRepository;
+    private final VolunteerRepository volunteerRepository;
     private final EventMembershipService service;
+
     @Autowired
     public VolunteerExtendedController(VolunteerRepository volunteerRepository, EventMembershipService service) {
         this.volunteerRepository = volunteerRepository;

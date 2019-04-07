@@ -12,6 +12,12 @@ spring:
         hbm2ddl:
           auto: update
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com
+    username: emiliia.nesterovych@gmail.com
+    password: 
+    port: 587
+
 auth:
   secret: a=l1t13.ama21ng_h0rs3;
   expiration: 86_400_000
