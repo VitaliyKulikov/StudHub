@@ -13,6 +13,14 @@ public class OrganisationSignupDto extends SignupDto {
 
     private String webpageReference;
 
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
     public String getDescription() {
         return description;
     }

@@ -124,7 +124,7 @@ public class FillUpManager {
         for (String email : orgEmails) {
             Principal p = new Principal();
             p.setPassword(encoder.encode("tester"));
-            p.setRole(Role.ROLE_VOLUNTEER);
+            p.setRole(Role.ROLE_ORGANISATION);
             p.setEmail(email);
             principalRepository.save(p);
         }
