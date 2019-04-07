@@ -15,4 +15,13 @@ export class ItemEventComponent implements OnInit {
   ngOnInit() {
   }
 
+  shrink(description: string) {
+    const splited = description.split(' ');
+    const sliced = splited.slice(0, 10);
+    if (sliced.length < splited.length) {
+      sliced.push('...');
+    }
+
+    return sliced.join(' ');
+  }
 }
