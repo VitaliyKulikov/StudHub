@@ -2,6 +2,7 @@ package org.hackathon.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -30,6 +31,9 @@ public class Event {
 
     @Column(nullable = false)
     private byte[] image;
+
+    @ManyToMany
+    private List<Volunteer> participants;
 
     public long getId() {
         return id;
@@ -77,5 +81,21 @@ public class Event {
 
     public void setOwner(Organisation owner) {
         this.owner = owner;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public List<Volunteer> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Volunteer> participants) {
+        this.participants = participants;
     }
 }

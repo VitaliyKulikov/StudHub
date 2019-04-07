@@ -43,7 +43,7 @@ public class EventMembershipService {
     }
 
     @Transactional
-    public void addEventMember(Long eventId, String email){
+    public void addEventMember(Long eventId, String email) {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new ResourceNotFoundException("Selected event does not exist."));
         Volunteer volunteer = volunteerRepository.findByPrincipalEmail(email)
@@ -53,6 +53,10 @@ public class EventMembershipService {
         eventMembership.setVolunteer(volunteer);
         eventMembership.setParticipationConfirmed(false);
         membershipRepository.save(eventMembership);
+    }
+
+    public Event findEvent(Long id) {
+        return eventRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event does not exist."));
     }
 
 }
