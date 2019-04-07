@@ -1,11 +1,13 @@
 :host {
   background: #f1f1f1;
-  font-family: 'Open Sans', "Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-family: 'Open Sans', "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-display: swap;
 }
+
 .nav-links {
   background: #008591;
 }
+
 .nav-links a {
   color: #fff;
   display: inline-block;
@@ -15,6 +17,7 @@
   font-weight: bold;
   letter-spacing: 0.1rem;
 }
+
 .router-container {
   border: 0.5rem #00afc4 solid;
   padding: 2rem;

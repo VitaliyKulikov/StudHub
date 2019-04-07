@@ -2,38 +2,38 @@
     <div class="row form-group">
         <form class="col-12" #volunteerForm="ngForm" (ngSubmit)="submit()">
             <p>
-                <label for="name">Ім'я
+                <label for="name">Ім'я <span class="required-asterisk"></span>
                     <input type="text" class="form-control" name="name" id="name" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="sname">Прізвище
+                <label for="sname">Прізвище<span class="required-asterisk"></span>
                     <input type="text" class="form-control" name="sname" id="sname" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="birthdate">Дата народження
+                <label for="birthdate">Дата народження<span class="required-asterisk"></span>
                     <input type="date" class="form-control" name="birthdate" id="birthdate"
                            ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="phone">Контактний телефон
+                <label for="phone">Контактний телефон<span class="required-asterisk"></span>
                     <input type="tel" class="form-control" name="phone" id="phone" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="mail">Електронна адреса
+                <label for="mail">Електронна адреса<span class="required-asterisk"></span>
                     <input type="email" class="form-control" name="mail" id="mail" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="mail">Пароль
+                <label for="mail">Пароль<span class="required-asterisk"></span>
                     <input type="password" class="form-control" name="password1" id="password1" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
             <p>
-                <label for="mail">Повтор пароля
+                <label for="mail">Повтор пароля<span class="required-asterisk"></span>
                     <input type="password" class="form-control" name="password2" id="password2" ngModel required [disabled]="isLoading" />
                 </label>
             </p>
@@ -81,7 +81,7 @@
             <p>
                 <label for="data-process-agreement">
                     <input type="checkbox" name="dataProcessAgreement" id="data-process-agreement"
-                           ngModel [disabled]="isLoading" />Я погоджуюся на обробку особистих даних
+                           ngModel [disabled]="isLoading" />Я погоджуюся на обробку особистих даних<span class="required-asterisk"></span>
                 </label>
             </p>
             <p>

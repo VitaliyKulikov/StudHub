@@ -24,17 +24,30 @@ header {
       line-height: 30px;
       color: #3B4044;
       text-transform: uppercase;
-    }
 
-    a.active::after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 100%;
-      left: 0;
-      bottom: -23px;
-      height: 4px;
-      background-color: #15A59C;
+      &.active::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        left: 0;
+        bottom: -23px;
+        height: 4px;
+        background-color: #15A59C;
+      }
+
+      &.signin {
+        margin-left: 80px;
+
+        i {
+          position: absolute;
+          color: #80868B;
+          font-size: 16px;
+          top: 50%;
+          left: -30px;
+          transform: translate(0, -50%);
+        }
+      }
     }
   }
 }

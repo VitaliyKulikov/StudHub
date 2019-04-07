@@ -16,6 +16,7 @@ import {HeaderComponent} from './header/header.component';
 import {SigninComponent} from './signin.component/signin/signin.component';
 import {EventComponent} from './event/event.component'
 import {EditEventComponent} from './event/edit-event/edit-event.component'
+import {ItemEventComponent} from './event/item-event/item-event.component'
 import {ViewEventComponent} from './event/view-event/view-event.component'
 import {CreateEventComponent} from './event/create-event/create-event.component'
 import {SignupComponent as OrganizationSignupComponent} from './organization/signup/signup.component';
@@ -40,6 +41,7 @@ import {AuthService} from '../services/auth.service';
     NotFoundPageComponent,
     HeaderComponent,
     CreateEventComponent,
+    ItemEventComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),

@@ -2,86 +2,86 @@
     <div class="row form-group">
         <form class="col-12" #volunteerForm="ngForm" (ngSubmit)="submit()">
             <p>
-                <label for="name">Ім'я
-                    <input type="text" class="form-control" name="name" id="name" ngModel required [disabled]="isLoading" />
+                <label for="name">Ім'я<span class="required-asterisk"></span>
+                    <input type="text" class="form-control" name="name" id="name" ngModel required/>
                 </label>
             </p>
             <p>
-                <label for="sname">Прізвище
-                    <input type="text" class="form-control" name="sname" id="sname" ngModel required [disabled]="isLoading" />
+                <label for="sname">Прізвище<span class="required-asterisk"></span>
+                    <input type="text" class="form-control" name="sname" id="sname" ngModel required/>
                 </label>
             </p>
             <p>
-                <label for="birthdate">Дата народження
+                <label for="birthdate">Дата народження<span class="required-asterisk"></span>
                     <input type="date" class="form-control" name="birthdate" id="birthdate"
-                           ngModel required [disabled]="isLoading" />
+                           ngModel required/>
                 </label>
             </p>
             <p>
-                <label for="phone">Контактний телефон
-                    <input type="tel" class="form-control" name="phone" id="phone" ngModel required [disabled]="isLoading" />
+                <label for="phone">Контактний телефон<span class="required-asterisk"></span>
+                    <input type="tel" class="form-control" name="phone" id="phone" ngModel required/>
                 </label>
             </p>
             <p>
-                <label for="mail">Електронна адреса
-                    <input type="email" class="form-control" name="mail" id="mail" ngModel required [disabled]="isLoading" />
+                <label for="mail">Електронна адреса<span class="required-asterisk"></span>
+                    <input type="email" class="form-control" name="mail" id="mail" ngModel required/>
                 </label>
             </p>
             <p>
-                <label for="mail">Пароль
-                    <input type="password" class="form-control" name="password1" id="password1" ngModel required [disabled]="isLoading" />
+                <label for="mail">Пароль<span class="required-asterisk"></span>
+                    <input type="password" class="form-control" name="password1" id="password1" ngModel required/>
                 </label>
             </p>
             <p>
-                <label for="mail">Повтор пароля
-                    <input type="password" class="form-control" name="password2" id="password2" ngModel required [disabled]="isLoading" />
+                <label for="mail">Повтор пароля<span class="required-asterisk"></span>
+                    <input type="password" class="form-control" name="password2" id="password2" ngModel required/>
                 </label>
             </p>
             <p>
                 <label for="facebook-profile">Посилання на Вашу сторінку у Facebook
                     <input type="url" class="form-control" name="facebookProfile" id="facebook-profile"
-                           ngModel [disabled]="isLoading" />
+                           ngModel/>
                 </label>
             </p>
             <p>
                 <label for="skills">Навички
-                    <input type="text" class="form-control" name="skills" id="skills" ngModel [disabled]="isLoading" />
+                    <input type="text" class="form-control" name="skills" id="skills" ngModel/>
                 </label>
             </p>
             <p>
                 <label for="prefered-location">Бажана локація
                     <input type="text" class="form-control" name="preferedLocation" id="prefered-location"
-                           ngModel [disabled]="isLoading" />
+                           ngModel/>
                 </label>
             </p>
             <p>
                 <label for="experience">Досвід волонтерства
                     <input type="text" class="form-control" name="experience" id="experience"
-                           ngModel [disabled]="isLoading" />
+                           ngModel/>
                 </label>
             </p>
             <p>
                 <label for="frequency">Frequency
                     <input type="text" class="form-control" name="frequency" id="frequency"
-                           ngModel [disabled]="isLoading" />
+                           ngModel/>
                 </label>
             </p>
             <p>
                 <label for="availability">Availabbility
                     <input type="text" class="form-control" name="availability" id="availability"
-                           ngModel [disabled]="isLoading" />
+                           ngModel/>
                 </label>
             </p>
             <p>
                 <label for="area-of-interest">Area of interest
                     <input type="text" class="form-control" name="areaOfInterest" id="area-of-interest"
-                           ngModel [disabled]="isLoading" />
+                           ngModel/>
                 </label>
             </p>
             <p>
                 <label for="data-process-agreement">
                     <input type="checkbox" name="dataProcessAgreement" id="data-process-agreement"
-                           ngModel [disabled]="isLoading" />Я погоджуюся на обробку особистих даних
+                           ngModel/>Я погоджуюся на обробку особистих даних
                 </label>
             </p>
             <p>
