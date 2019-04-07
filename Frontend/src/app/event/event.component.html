@@ -28,7 +28,7 @@
           <h3>Мої події</h3>
         </div>
         <div class="col-6">
-          <button class="btn-create-event">+ Створити нову подію</button>
+          <button class="btn-create-event" *ngIf="currentRole=='ROLE_ORGANISATION'">+ Створити нову подію</button>
         </div>
       </div>
       <div class="row">
