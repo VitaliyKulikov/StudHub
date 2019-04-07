@@ -1,23 +1,45 @@
-<div class="col-12">
-  <div class="row form-group">
-    <form class="col-12" #loginForm="ngForm" (ngSubmit)="submit()">
-      <p>
-        <label for="email">Електронна адреса
-          <input type="email" class="form-control" name="email" id="email" ngModel required [disabled]="isLoading"/>
-        </label>
-      </p>
-      <p>
-        <label for="password">Пароль
-          <input type="password" class="form-control" name="password" id="password" ngModel required [disabled]="isLoading"/>
-        </label>
-      </p>
-      <p>
-        <label for="register-btn">
-          <button type="submit" name="register-btn" id="register-btn" class="btn btn-default">
-            Ввійти
-          </button>
-        </label>
-      </p>
-    </form>
+<div class="row">
+  <div class="col-12">
+    <div class="page-signin">
+      <div class="row">
+        <div class="col-xl-5 col-sm-5 col-md-12">
+          <img class="banner" src="assets/volunteer.jpg">
+        </div>
+        <div class="col-xl-7 col-sm-7 col-md-12">
+          <h2>Увійти</h2>
+          <div class="row form-group">
+            <form class="col-7" #loginForm="ngForm" (ngSubmit)="submit()">
+              <p>
+                <label for="email"><span>Електронна адреса</span>
+                  <input type="email" class="form-control" name="email" id="email" ngModel required
+                    [disabled]="isLoading" />
+                </label>
+              </p>
+              <p>
+                <label for="password"><span>Пароль</span>
+                  <input type="password" class="form-control" name="password" id="password" ngModel required
+                    [disabled]="isLoading" />
+                </label>
+              </p>
+              <div class="row">
+                <div class="col-6">
+                  <p class="mb-15">
+                    <input type="checkbox">&nbsp;&nbsp;Запам'ятати мене
+                  </p>
+                </div>
+                <div class="col-6"></div>
+              </div>
+              <p>
+                <label for="register-btn">
+                  <button type="submit" name="register-btn" id="register-btn" class="btn btn-default">
+                     Увійти
+                  </button>
+                </label>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

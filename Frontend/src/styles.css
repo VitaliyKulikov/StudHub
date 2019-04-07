@@ -3,6 +3,10 @@ menu, li, ul, ol, p, h1, h2, h3, h4, h5, h6, label {
     padding: 0;
 }
 
+li {
+  list-style: none;
+}
+
 a, a:hover {
     text-decoration: none;
 }
@@ -16,6 +20,10 @@ button, button:active {
     content: "";
     display: block;
     clear: both;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
 }
 
 .container {
