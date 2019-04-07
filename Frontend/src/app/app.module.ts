@@ -30,6 +30,7 @@ import {CurrentUserService} from '../services/current-user.service';
 import {LocalStorage, LocalStorageC} from './storage';
 import {AuthService} from '../services/auth.service';
 import {RouteHelperService} from '../services/route-helper.service';
+import {EventService} from '../services/event.service';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import {RouteHelperService} from '../services/route-helper.service';
     AuthService,
     CurrentUserService,
     RouteHelperService,
+    EventService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
