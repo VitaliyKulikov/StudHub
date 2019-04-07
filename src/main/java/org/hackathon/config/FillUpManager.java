@@ -1,5 +1,6 @@
 package org.hackathon.config;
 
+import org.apache.commons.io.FileUtils;
 import org.hackathon.entity.*;
 import org.hackathon.repository.*;
 import org.hackathon.security.Role;
@@ -7,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -199,7 +204,7 @@ public class FillUpManager {
             event.setLocation(eventLocations.get(i));
             event.setStartDate(eventStart.get(i));
             event.setEndDate(eventEnd.get(i));
-            event.setImage(new byte[]{1});
+//            event.setImage(new byte[]{1});
             Event saved = eventRepository.save(event);
             events.add(saved);
         }

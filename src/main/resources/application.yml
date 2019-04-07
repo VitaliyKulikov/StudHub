@@ -22,7 +22,14 @@ spring:
     username: emiliia.nesterovych@gmail.com
     password: 
     port: 587
-
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2048
+      max-file-size: 15728640
+      max-request-size: 225443840
+file:
+  upload-dir: ./uploads
 auth:
   secret: a=l1t13.ama21ng_h0rs3;
   expiration: 86_400_000

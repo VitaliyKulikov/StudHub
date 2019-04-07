@@ -37,7 +37,7 @@ public class Organisation {
     @OneToMany(mappedBy="owner")
     private List<Event> events;
 
-    private byte[] image;
+    private String image;
 
     private boolean confirmed = false;
 
@@ -57,11 +57,11 @@ public class Organisation {
         this.description = description;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

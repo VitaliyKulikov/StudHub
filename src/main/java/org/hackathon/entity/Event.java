@@ -32,7 +32,6 @@ public class Event {
     @JoinColumn(name = "owner", nullable = false)
     private Organisation owner;
 
-    @Column()
     private byte[] image;
 
     @ManyToMany

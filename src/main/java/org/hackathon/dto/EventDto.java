@@ -1,21 +1,33 @@
 package org.hackathon.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.core.Relation;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Relation(value = "event", collectionRelation = "events")
 public class EventDto {
     private long id;
+    @NotBlank
     private String name;
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime startDate;
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime endDate;
+    @NotBlank
     private String description;
+    @NotBlank
     private String location;
     private OrganisationDto owner;
     private List<VolunteerDto> participants;
-    private byte[] image;
+    @NotNull
+    private MultipartFile image;
 
     public long getId() {
         return id;
@@ -73,11 +85,11 @@ public class EventDto {
         this.owner = owner;
     }
 
-    public byte[] getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 

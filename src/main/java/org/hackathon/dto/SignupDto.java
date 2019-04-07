@@ -35,7 +35,7 @@ public class SignupDto {
     @Pattern(regexp = "(^$|[0-9]{10})")
     protected String phone;
 
-    protected byte[] image;
+    protected String image;
 
     @DateTimeFormat(iso = DATE)
     private LocalDate birthDate;
@@ -96,11 +96,11 @@ public class SignupDto {
         this.phone = phone;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
