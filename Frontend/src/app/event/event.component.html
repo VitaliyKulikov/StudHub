@@ -1,5 +1,7 @@
 <div class="row page-events">
-    <div class="col-6 block-search">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-6 block-search">
         <p>
             <label for="search">
                 <input id="search" name="search" type="text" placeholder="Search" [(ngModel)]="searchTerm" (input)="filter()"><i
@@ -7,7 +9,14 @@
             </label>
             <img src="" alt="">
         </p>
+      </div>
+      <div class="col-6 block-toggle-view">
+        <p>
+          Вид: <a href="#" class="blue underline">Картки</a>
+        </p>
+      </div>
     </div>
+  </div>
     <ng-container *ngIf="isLoading">
         Завантаження...
     </ng-container>

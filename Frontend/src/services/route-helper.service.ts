@@ -7,7 +7,6 @@ const blackRoutes = [
 ];
 
 const blackHeaderRoute = [
-  '/'
 ];
 
 
