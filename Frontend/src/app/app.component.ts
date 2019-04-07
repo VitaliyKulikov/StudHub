@@ -7,7 +7,10 @@ import {ColorTheme, IColorThemeDefinition, RouteHelperService} from '../services
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  theme: IColorThemeDefinition;
+  theme: IColorThemeDefinition = {
+    color: ColorTheme.White,
+    isHeaderOnly: false
+  };
   ColorTheme = ColorTheme;
 
   constructor(private routeHelper: RouteHelperService) {
