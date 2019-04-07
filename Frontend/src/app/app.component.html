@@ -1,10 +1,12 @@
-<div class="container">
-  <app-header></app-header>
-  <div class="app-container">
-    <div class="row">
-      <div class="col-md-12">
-        <router-outlet></router-outlet>
-      </div>
+<div [ngClass]="theme.color==ColorTheme.Black && !theme.isHeaderOnly? 'black' : (theme.color==ColorTheme.Black && theme.isHeaderOnly? 'header-black' : 'white')">
+    <div class="container">
+        <app-header></app-header>
+        <div class="app-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
