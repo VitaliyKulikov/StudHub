@@ -22,7 +22,7 @@ public class EventController {
     }
 
     @PutMapping("/api/events/{eventId}/apply")
-    public void registerForEvent(@RequestParam @Positive @NotNull long eventId) {
+    public void registerForEvent(@RequestParam @Positive @NotNull Long eventId) {
         String email = ((Principal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmail();
         service.addEventMember(eventId, email);
     }
