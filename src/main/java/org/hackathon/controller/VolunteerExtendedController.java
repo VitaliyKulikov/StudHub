@@ -10,8 +10,6 @@ import org.hackathon.service.EventMembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.hateoas.Resources;
-import org.springframework.hateoas.core.EmbeddedWrapper;
-import org.springframework.hateoas.core.EmbeddedWrappers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -44,7 +41,7 @@ public class VolunteerExtendedController {
     }
 
     @GetMapping("/api/volunteers/{id}/rate")
-    public ResponseEntity<Double> getRating(@PathVariable("id") Long id){
+    ResponseEntity<Double> getRating(@PathVariable("id") Long id){
 
         List<EventMembership> allMemberships = volunteerRepository.findById(id)
                 .orElseThrow(ResourceNotFoundException::new)
@@ -60,7 +57,7 @@ public class VolunteerExtendedController {
 
     @Secured("ROLE_ORGANISATION")
     @PutMapping("/volunteers/{id}/rate")
-    public void setRating(@RequestParam @Positive @NotNull long volunteerId, @RequestBody @Valid EventMembershipDto dto){
+    void setRating(@RequestParam @Positive @NotNull long volunteerId, @RequestBody @Valid EventMembershipDto dto){
         Principal principal = (Principal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         service.apply(dto, principal.getEmail(), volunteerId);
     }
@@ -70,19 +67,10 @@ public class VolunteerExtendedController {
         Volunteer volunteer = volunteerRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
 
         Set<Event> events =
-                volunteer.getEventMemberships().stream().map(EventMembership::getEvent).collect(Collectors.toSet());
+                volunteer.getEventMemberships().stream()
+                        .map(EventMembership::getEvent)
+                        .collect(Collectors.toSet());
 
-        Resources<?> resources;
-        if (events.isEmpty()) {
-            EmbeddedWrappers wrappers = new EmbeddedWrappers(false);
-            EmbeddedWrapper wrapper = wrappers.emptyCollectionOf(Event.class);
-            List<Object> content = Collections.singletonList(wrapper);
-
-            resources = new Resources<>(content);
-        } else {
-            resources = new Resources<>(events);
-        }
-
-        return ResponseEntity.ok(resources);
+        return ResponseEntity.ok(ControllerHelper.getResource(events, Event.class));
     }
 }

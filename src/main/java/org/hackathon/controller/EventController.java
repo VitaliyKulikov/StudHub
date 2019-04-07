@@ -5,14 +5,19 @@ import org.hackathon.entity.Event;
 import org.hackathon.entity.Principal;
 import org.hackathon.entity.Volunteer;
 import org.hackathon.mail.MailBox;
+import org.hackathon.repository.EventRepository;
 import org.hackathon.service.EventMembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resources;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
@@ -24,25 +29,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
+@RequestMapping("/api/events")
 public class EventController {
 
     private final EventMembershipService service;
     private final MailBox mailBox;
+    private final EventRepository eventRepository;
 
     @Autowired
-    public EventController(EventMembershipService service, MailBox mailBox) {
+    public EventController(EventMembershipService service, MailBox mailBox, EventRepository eventRepository) {
         this.service = service;
         this.mailBox = mailBox;
+        this.eventRepository = eventRepository;
     }
 
-    @PutMapping("/api/events/{eventId}/apply")
+    @PutMapping("/{eventId}/apply")
     public void registerForEvent(@RequestParam @Positive @NotNull Long eventId) {
         String email = ((Principal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmail();
         service.addEventMember(eventId, email);
     }
 
+    @GetMapping
+    ResponseEntity<Resources<?>> getAllEvents() {
+       return ResponseEntity.ok(ControllerHelper.getResource(eventRepository.findAll(), Event.class));
+    }
+
     @Secured("ROLE_ORGANISATION")
-    @PutMapping("/api/event/{id}/notification")
+    @PutMapping("/{id}/notification")
     public void broadcastMessageToEventMembers(@PathParam("id") long id, @Valid @RequestBody NotificationDto notification) {
         Event event = service.findEvent(id);
         List<String> participants = event.getParticipants().stream()
@@ -56,7 +69,7 @@ public class EventController {
     }
 
     //For testing purposes
-    @PutMapping("/api/notificationsss")
+    @PutMapping("/notificationsss")
     public void broadcastMessageToEventMembers(@Valid @RequestBody NotificationDto notification) {
 
         List<String> participants = Arrays.asList("lalaith.ned.midh@gmail.com");

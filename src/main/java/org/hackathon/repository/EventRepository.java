@@ -2,8 +2,8 @@ package org.hackathon.repository;
 
 import org.hackathon.entity.Event;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "events", path = "events")
+@Repository
 public interface EventRepository extends PagingAndSortingRepository<Event, Long> {
 }
