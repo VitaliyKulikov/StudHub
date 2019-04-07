@@ -1,5 +1,5 @@
 export interface IError {
-    status: number;
+    status?: number;
     title: string;
     description: string;
 }

@@ -22,7 +22,7 @@ export class SigninComponent implements OnInit {
     this.isLoading = true;
     try {
       await this.currentUserService.signin(this.loginForm.value).toPromise();
-      this.router.navigate(['home']);
+      this.router.navigate(['']);
     } finally {
       this.isLoading = false;
     }

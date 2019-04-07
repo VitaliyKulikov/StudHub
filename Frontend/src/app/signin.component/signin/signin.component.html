@@ -2,12 +2,12 @@
   <div class="row form-group">
     <form class="col-12" #loginForm="ngForm" (ngSubmit)="submit()">
       <p>
-        <label for="mail">Електронна адреса
-          <input type="email" class="form-control" name="mail" id="mail" ngModel required [disabled]="isLoading"/>
+        <label for="email">Електронна адреса
+          <input type="email" class="form-control" name="email" id="email" ngModel required [disabled]="isLoading"/>
         </label>
       </p>
       <p>
-        <label for="mail">Пароль
+        <label for="password">Пароль
           <input type="password" class="form-control" name="password" id="password" ngModel required [disabled]="isLoading"/>
         </label>
       </p>
