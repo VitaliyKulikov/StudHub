@@ -4,15 +4,20 @@ import org.hackathon.entity.Organisation;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "organizations", path = "organizations")
+import java.util.Optional;
+
+@Repository
 public interface OrganizationRepository extends PagingAndSortingRepository<Organisation, Long> {
 
     @Override
-    @RestResource(exported = false)
     <S extends Organisation> S save(S entity);
 
     @Override
-    @RestResource(exported = false)
     <S extends Organisation> Iterable<S> saveAll(Iterable<S> entities);
+
+    Iterable<Organisation> findByConfirmed(Boolean confirmed);
+
+    Optional<Organisation> findByPrincipalEmail(String email);
 }

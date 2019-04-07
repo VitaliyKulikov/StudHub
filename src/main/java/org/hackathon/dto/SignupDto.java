@@ -1,9 +1,14 @@
 package org.hackathon.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+
+import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 
 public class SignupDto {
 
@@ -30,7 +35,10 @@ public class SignupDto {
     @Pattern(regexp = "(^$|[0-9]{10})")
     protected String phone;
 
-    protected byte[] image;
+    protected String image;
+
+    @DateTimeFormat(iso = DATE)
+    private LocalDate birthDate;
 
     public String getPassword1() {
         return password1;
@@ -88,11 +96,19 @@ public class SignupDto {
         this.phone = phone;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 }

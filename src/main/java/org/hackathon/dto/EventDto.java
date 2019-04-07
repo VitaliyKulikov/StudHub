@@ -1,41 +1,33 @@
-package org.hackathon.entity;
+package org.hackathon.dto;
 
-import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.hateoas.core.Relation;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-@Entity
-public class Event {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+@Relation(value = "event", collectionRelation = "events")
+public class EventDto {
     private long id;
-
-    @Column(name = "name", nullable = false, length = 200)
+    @NotBlank
     private String name;
-
-    @Column(name = "start_date", nullable = false)
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime startDate;
-
-    @Column(name = "end_date", nullable = false)
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime endDate;
-
-    @Column(name = "description", nullable = false, length = 4000)
+    @NotBlank
     private String description;
-
-    @Column(name = "address", nullable = false)
+    @NotBlank
     private String location;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner", nullable = false)
-    private Organisation owner;
-
-    private byte[] image;
-
-    @ManyToMany
-    private List<Volunteer> participants;
+    private OrganisationDto owner;
+    private List<VolunteerDto> participants;
+    @NotNull
+    private MultipartFile image;
 
     public long getId() {
         return id;
@@ -85,27 +77,27 @@ public class Event {
         this.location = location;
     }
 
-    public Organisation getOwner() {
+    public OrganisationDto getOwner() {
         return owner;
     }
 
-    public void setOwner(Organisation owner) {
+    public void setOwner(OrganisationDto owner) {
         this.owner = owner;
     }
 
-    public byte[] getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 
-    public List<Volunteer> getParticipants() {
+    public List<VolunteerDto> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<Volunteer> participants) {
+    public void setParticipants(List<VolunteerDto> participants) {
         this.participants = participants;
     }
 }

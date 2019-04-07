@@ -1,5 +1,10 @@
 server:
-  port: 8080
+  port: 8443
+  ssl:
+    key-store: keystore.p12
+    key-store-password: password
+    keyStoreType: PKCS12
+    keyAlias: tomcat
 
 spring:
   datasource:
@@ -10,8 +15,21 @@ spring:
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
+          auto: create-drop
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com
+    username: emiliia.nesterovych@gmail.com
+    password: 
+    port: 587
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2048
+      max-file-size: 15728640
+      max-request-size: 225443840
+file:
+  upload-dir: ./uploads
 auth:
   secret: a=l1t13.ama21ng_h0rs3;
   expiration: 86_400_000

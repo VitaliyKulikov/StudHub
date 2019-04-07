@@ -1,6 +1,10 @@
 package org.hackathon.controller;
 
+import org.hackathon.dto.OrganisationSignupDto;
+import org.hackathon.dto.SignupDto;
+import org.hackathon.entity.Organisation;
 import org.hackathon.entity.Principal;
+import org.hackathon.mapper.OrganizationMapper;
 import org.hackathon.mapper.PrincipalMapper;
 import org.hackathon.mapper.VolunteerMapper;
 import org.hackathon.config.SecurityProperties;
@@ -31,24 +35,28 @@ import javax.validation.ValidationException;
 public class AuthController {
     private final PrincipalService service;
     private final VolunteerRepository volunteerRepository;
+    private final OrganizationRepository organizationRepository;
     private final OrganizationRepository orgRepository;
     private final PrincipalRepository principalRepository;
     private final AuthenticationManager authenticationManager;
     private final SecurityProperties securityProperties;
     private final JWTTokenProvider jwtTokenUtil;
     private final VolunteerMapper volunteerMapper;
+    private final OrganizationMapper organizationMapper;
     private final PrincipalMapper principalMapper;
 
     @Autowired
-    public AuthController(PrincipalService service, VolunteerRepository volunteerRepository, OrganizationRepository orgRepository, PrincipalRepository principalRepository, AuthenticationManager authenticationManager, SecurityProperties securityProperties, JWTTokenProvider jwtTokenUtil, VolunteerMapper volunteerMapper, PrincipalMapper principalMapper) {
+    public AuthController(PrincipalService service, VolunteerRepository volunteerRepository, OrganizationRepository organizationRepository, OrganizationRepository orgRepository, PrincipalRepository principalRepository, AuthenticationManager authenticationManager, SecurityProperties securityProperties, JWTTokenProvider jwtTokenUtil, VolunteerMapper volunteerMapper, OrganizationMapper organizationMapper, PrincipalMapper principalMapper) {
         this.service = service;
         this.volunteerRepository = volunteerRepository;
+        this.organizationRepository = organizationRepository;
         this.orgRepository = orgRepository;
         this.principalRepository = principalRepository;
         this.authenticationManager = authenticationManager;
         this.securityProperties = securityProperties;
         this.jwtTokenUtil = jwtTokenUtil;
         this.volunteerMapper = volunteerMapper;
+        this.organizationMapper = organizationMapper;
         this.principalMapper = principalMapper;
     }
 
@@ -56,9 +64,7 @@ public class AuthController {
     @Transactional
     public ResponseEntity registerUser(@RequestBody @Valid VolunteerSignupDto user) {
 
-        if (!user.getPassword1().equals(user.getPassword2())) {
-            throw new ValidationException("Passwords must match");
-        }
+        validatePassword(user);
 
         Volunteer volunteer = volunteerMapper.toEntity(user);
         Principal principal = principalMapper.toEntity(user);
@@ -67,8 +73,19 @@ public class AuthController {
         return ResponseEntity.ok().build();
     }
 
+    private void validatePassword(SignupDto user) {
+        if (!user.getPassword1().equals(user.getPassword2())) {
+            throw new ValidationException("Passwords must match");
+        }
+    }
+
     @PostMapping("/api/organisation-signup")
-    public ResponseEntity registerOrganisation(@RequestBody @Valid VolunteerSignupDto user) {
+    public ResponseEntity registerOrganisation(@RequestBody @Valid OrganisationSignupDto organization) {
+        Organisation organisation = organizationMapper.toEntity(organization);
+        Principal principal = principalMapper.toEntity(organization);
+        principalRepository.save(principal);
+        organisation.setPrincipal(principal);
+        orgRepository.save(organisation);
         return ResponseEntity.ok().build();
     }
 
