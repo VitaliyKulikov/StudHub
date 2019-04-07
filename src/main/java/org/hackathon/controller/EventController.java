@@ -1,10 +1,12 @@
 package org.hackathon.controller;
 
+import org.hackathon.dto.EventDto;
 import org.hackathon.dto.NotificationDto;
 import org.hackathon.entity.Event;
 import org.hackathon.entity.Principal;
 import org.hackathon.entity.Volunteer;
 import org.hackathon.mail.MailBox;
+import org.hackathon.mapper.EventMapper;
 import org.hackathon.repository.EventRepository;
 import org.hackathon.service.EventMembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ import javax.websocket.server.PathParam;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 @RequestMapping("/api/events")
@@ -35,12 +38,14 @@ public class EventController {
     private final EventMembershipService service;
     private final MailBox mailBox;
     private final EventRepository eventRepository;
+    private final EventMapper eventMapper;
 
     @Autowired
-    public EventController(EventMembershipService service, MailBox mailBox, EventRepository eventRepository) {
+    public EventController(EventMembershipService service, MailBox mailBox, EventRepository eventRepository, EventMapper eventMapper) {
         this.service = service;
         this.mailBox = mailBox;
         this.eventRepository = eventRepository;
+        this.eventMapper = eventMapper;
     }
 
     @PutMapping("/{eventId}/apply")
@@ -51,7 +56,10 @@ public class EventController {
 
     @GetMapping
     ResponseEntity<Resources<?>> getAllEvents() {
-       return ResponseEntity.ok(ControllerHelper.getResource(eventRepository.findAll(), Event.class));
+        List<EventDto> events = StreamSupport.stream(eventRepository.findAll().spliterator(), false)
+                .map(eventMapper::toDto)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(ControllerHelper.getResource(events, Event.class));
     }
 
     @Secured("ROLE_ORGANISATION")

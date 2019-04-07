@@ -13,7 +13,7 @@ public final class ControllerHelper {
     }
 
 
-    static <T> Resources<?> getResource(Iterable<T> active, Class<T> clazz) {
+    static Resources<?> getResource(Iterable<?> active, Class<?> clazz) {
         Resources<?> resources;
         if (!active.iterator().hasNext()) {
             EmbeddedWrappers wrappers = new EmbeddedWrappers(false);
