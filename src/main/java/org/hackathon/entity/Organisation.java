@@ -34,6 +34,9 @@ public class Organisation {
     @Column(name = "members")
     private List<Volunteer> members;
 
+    @OneToMany(mappedBy="owner")
+    private List<Event> events;
+
     private byte[] image;
 
     private boolean confirmed = false;
@@ -116,5 +119,13 @@ public class Organisation {
 
     public void setConfirmed(boolean confirmed) {
         this.confirmed = confirmed;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
