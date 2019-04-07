@@ -26,23 +26,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 new HttpHeaders(), HttpStatus.I_AM_A_TEAPOT, request);
     }
 
-    @ExceptionHandler(value = {DataAccessException.class})
-    protected ResponseEntity<Object> handleConstraintViolationException(DataAccessException ex, WebRequest request) {
-        String bodyOfResponse = "Invalid request exception. Message: " + ex.getMessage();
-        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
-    }
-
-    @ExceptionHandler(value = {DataIntegrityViolationException.class, ConstraintViolationException.class})
-    protected ResponseEntity<Object> handleDataIntegrityViolationException(ValidationException ex, WebRequest request) {
-        String bodyOfResponse = "Invalid request exception. Message: " + ex.getMessage();
-        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
-    }
-
-    @ExceptionHandler(value = SQLException.class)
-    protected ResponseEntity<Object> handleSqlException(SQLException ex, WebRequest request) {
-        String bodyOfResponse = "Invalid request exception. Message: " + ex.getMessage();
-        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
-    }
-
-
 }
