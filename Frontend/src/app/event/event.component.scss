@@ -2,14 +2,14 @@
   margin-bottom: 40px;
 
   h3 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #848484;
     font-size: 16px;
     line-height: 1em;
     font-weight: 600;
   }
 
-  .btn-show-more {
+  .btn-show-more, .btn-create-event {
     display: block;
     margin: 0 auto;
     color: #0793E4;
@@ -23,6 +23,12 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .btn-create-event {
+    margin: 0 0 0 auto;
+    font-size: 16px;
+    text-align: right;
   }
 
   .block-search {
@@ -68,7 +74,7 @@
     display: flex;
     justify-content: flex-end;
     color: #35353B;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 38px;
   }
