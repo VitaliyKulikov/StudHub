@@ -3,13 +3,15 @@ export interface IUser {
   role: string;
 }
 
-export interface IUserToken extends IUser {
+export interface IUserToken {
   exp: number;
   iat: number;
+  role: string;
+  iss: string;
 }
 
 export enum Role {
-  Admin = 'Admin',
-  Volunteer = 'Volunteer',
+  Admin = 'ROLE_ADMIN',
+  Volunteer = 'ROLE_VOLUNTEER',
   Anonymous = 'Anonymous'
 }
