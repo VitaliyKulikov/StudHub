@@ -12,23 +12,23 @@ public class Event {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "start_date", unique = true, nullable = false)
+    @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;
 
-    @Column(name = "end_date", unique = true, nullable = false)
+    @Column(name = "end_date", nullable = false)
     private LocalDateTime endDate;
 
-    @Column(name = "description", unique = true, nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "address", unique = true, nullable = false)
+    @Column(name = "address", nullable = false)
     private String location;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner", nullable = false)
     private Organisation owner;
 
-    @Column(nullable = false)
+    @Column()
     private byte[] image;
 
     public long getId() {

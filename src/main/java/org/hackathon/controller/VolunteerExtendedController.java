@@ -1,12 +1,17 @@
 package org.hackathon.controller;
 
 import org.hackathon.dto.EventMembershipDto;
+import org.hackathon.entity.Event;
 import org.hackathon.entity.EventMembership;
 import org.hackathon.entity.Principal;
+import org.hackathon.entity.Volunteer;
 import org.hackathon.repository.VolunteerRepository;
 import org.hackathon.service.EventMembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.hateoas.Resources;
+import org.springframework.hateoas.core.EmbeddedWrapper;
+import org.springframework.hateoas.core.EmbeddedWrappers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,8 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 public class VolunteerExtendedController {
@@ -50,9 +58,30 @@ public class VolunteerExtendedController {
     }
 
     @Secured("ROLE_ORGANISATION")
-    @PutMapping("/volunteer/{id}/rate")
+    @PutMapping("/volunteers/{id}/rate")
     public void setRating(@RequestParam @Positive @NotNull long volunteerId, @RequestBody @Valid EventMembershipDto dto){
         Principal principal = (Principal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         service.apply(dto, principal.getEmail(), volunteerId);
+    }
+
+    @GetMapping("/api/volunteers/{id}/events")
+    ResponseEntity<Resources<?>>  getEvents(@PathVariable("id") @Positive @NotNull long id){
+        Volunteer volunteer = volunteerRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+
+        Set<Event> events =
+                volunteer.getEventMemberships().stream().map(EventMembership::getEvent).collect(Collectors.toSet());
+
+        Resources<?> resources;
+        if (events.isEmpty()) {
+            EmbeddedWrappers wrappers = new EmbeddedWrappers(false);
+            EmbeddedWrapper wrapper = wrappers.emptyCollectionOf(Event.class);
+            List<Object> content = Collections.singletonList(wrapper);
+
+            resources = new Resources<>(content);
+        } else {
+            resources = new Resources<>(events);
+        }
+
+        return ResponseEntity.ok(resources);
     }
 }

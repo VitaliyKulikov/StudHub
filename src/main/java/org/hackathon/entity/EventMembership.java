@@ -26,7 +26,6 @@ public class EventMembership {
     @Column(name = "mark")
     @Max(5)
     @Min(0)
-    @NotNull
     private Integer mark;
 
     @RestResource(exported = false)
@@ -69,11 +68,11 @@ public class EventMembership {
         this.timeSpent = timeSpent;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
