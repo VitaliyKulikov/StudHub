@@ -27,6 +27,7 @@ import {TokenInterceptor} from '../interceptors/token.interceptor';
 import {CurrentUserService} from '../services/current-user.service';
 import {LocalStorage, LocalStorageC} from './storage';
 import {AuthService} from '../services/auth.service';
+import {RouteHelperService} from '../services/route-helper.service';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import {AuthService} from '../services/auth.service';
     ErrorSerivce,
     AuthService,
     CurrentUserService,
+    RouteHelperService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
