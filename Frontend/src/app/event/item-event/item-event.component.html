@@ -3,13 +3,13 @@
     <img src="assets/event-placeholder.jpeg" alt="event">
   </div>
   <div class="bottom-section">
-    <p><time datetime="2008-02-14 20:00">24.05.19</time></p>
-    <h5>Супровід незрячого</h5>
-    <p class="description">Інститут суспільних ініціатив</p>
+    <p><time>{{event.startDate}}</time></p>
+    <h5>{{event.name}}</h5>
+    <p class="description">{{shrink(event.description)}}</p>
     <p class="statistic-set clearfix">
       <span><i class="fas fa-star"></i>4,7</span>
       <span><i class="fas fa-user-alt"></i>10+</span>
-      <span><i class="fas fa-map-marker-alt"></i>Lviv</span>
+      <span><i class="fas fa-map-marker-alt"></i>{{event.location}}</span>
       <button>Долучитися</button>
     </p>
   </div>
