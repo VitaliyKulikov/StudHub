@@ -13,5 +13,6 @@ export interface IUserToken {
 export enum Role {
   Admin = 'ROLE_ADMIN',
   Volunteer = 'ROLE_VOLUNTEER',
+  Organisation = 'ROLE_ORGANISATION',
   Anonymous = 'Anonymous'
 }

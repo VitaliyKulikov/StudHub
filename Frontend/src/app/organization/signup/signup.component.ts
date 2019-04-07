@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  @ViewChild('volunteerForm') volunteerForm;
+  @ViewChild('volunteerForm') organisationForm;
   isLoading = false;
 
   constructor(private authService: AuthService,
@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
   async submit() {
     this.isLoading = true;
     try {
-      await this.authService.signin(this.volunteerForm.value).toPromise();
+      await this.authService.signupOrganisation(this.organisationForm.value).toPromise();
       this.router.navigate(['signin']);
     } finally {
       this.isLoading = false;

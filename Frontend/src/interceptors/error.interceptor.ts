@@ -39,7 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   handleErrorResponce(res: HttpErrorResponse) {
-    const data = res.error;
+    const data = !res.error ? {} : res.error;
     let description = data.toString();
 
     if (data.errors) {
