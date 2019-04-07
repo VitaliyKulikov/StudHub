@@ -1,9 +1,6 @@
 package org.hackathon.config;
 
-import org.hackathon.entity.Event;
-import org.hackathon.entity.Organisation;
-import org.hackathon.entity.Principal;
-import org.hackathon.entity.Volunteer;
+import org.hackathon.entity.*;
 import org.hackathon.repository.*;
 import org.hackathon.security.Role;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class FillUpManager {
@@ -112,15 +108,9 @@ public class FillUpManager {
     }
 
     public void fillUp() {
-        createUsers();
-        createEvents();
-    }
-
-    private void createUsers() {
-
         for (String email : volunteerEmails) {
             Principal p = new Principal();
-            p.setPassword(encoder.encode("test"));
+            p.setPassword(encoder.encode("tester"));
             p.setRole(Role.ROLE_VOLUNTEER);
             p.setEmail(email);
             principalRepository.save(p);
@@ -128,7 +118,7 @@ public class FillUpManager {
 
         for (String email : orgEmails) {
             Principal p = new Principal();
-            p.setPassword(encoder.encode("test"));
+            p.setPassword(encoder.encode("tester"));
             p.setRole(Role.ROLE_VOLUNTEER);
             p.setEmail(email);
             principalRepository.save(p);
@@ -147,6 +137,7 @@ public class FillUpManager {
             orgRepository.save(org);
         }
 
+        List<Volunteer> volunteers = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             Volunteer volunteer = new Volunteer();
             volunteer.setFirstName(volunteerFirstNames.get(i));
@@ -154,12 +145,9 @@ public class FillUpManager {
             volunteer.setPrincipal(principalRepository.findByEmail(volunteerEmails.get(i)).get());
             volunteer.setAddress("Львів, вул. Джонна Леннонна, " + i);
             volunteer.setBirthDate(volunteerBirthday.get(i));
-            volunteerRepository.save(volunteer);
+            volunteers.add(volunteerRepository.save(volunteer));
         }
 
-    }
-
-    private void createEvents() {
         List<String> eventNames = Arrays.asList("Суботник у Стрийському парку", "Тренінг \"Ефективне енергоспоживання\"", "Здача крові", "Візит Миколая до дітей", "Збір продуктів харчування для військових");
         List<String> eventLocations = Arrays.asList("Cтрийському парк, озеро з лебедями",
                 "вул. Пекарська 72, Центр зайнятості",
@@ -193,6 +181,8 @@ public class FillUpManager {
                 LocalDateTime.of(2019, 4, 10, 17, 0),
                 LocalDateTime.of(2019, 4, 8, 20, 0),
                 LocalDateTime.of(2019, 4, 10, 17, 0));
+
+        List<Event> events = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             Event event = new Event();
             event.setName(eventNames.get(i));
@@ -210,7 +200,25 @@ public class FillUpManager {
             event.setStartDate(eventStart.get(i));
             event.setEndDate(eventEnd.get(i));
             event.setImage(new byte[]{1});
-            eventRepository.save(event);
+            Event saved = eventRepository.save(event);
+            events.add(saved);
+        }
+
+        Random rand = new Random();
+        for (Event event : events) {
+            Set<Integer> used = new HashSet<>();
+            for (int i = 0; i < rand.nextInt(5) + 3; i++) {
+                EventMembership membership = new EventMembership();
+                membership.setEvent(event);
+                int index = rand.nextInt(8);
+                if (!used.contains(index)) {
+                    Volunteer volunteer = volunteers.get(index);
+                    membership.setVolunteer(volunteer);
+                    used.add(index);
+                    membership.setParticipationConfirmed(true);
+                    membershipRepository.save(membership);
+                }
+            }
         }
     }
 }
