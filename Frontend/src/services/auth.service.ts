@@ -6,7 +6,11 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  signin(req) {
+  signupVolunteer(req) {
     return this.http.post('api/user-signup', req);
+  }
+
+  signupOrganisation(req) {
+    return this.http.post('api/organisation-signup', req);
   }
 }

@@ -57,7 +57,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-universal-demo:build"
+            "browserTarget": "ng-universal-demo:build",
+            "ssl": true,
+            "sslCert": "keystore.p12"
           },
           "configurations": {
             "production": {
