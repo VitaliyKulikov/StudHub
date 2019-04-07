@@ -15,7 +15,7 @@ spring:
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
+          auto: create-drop
         dialect: org.hibernate.dialect.PostgreSQLDialect
   mail:
     host: smtp.gmail.com

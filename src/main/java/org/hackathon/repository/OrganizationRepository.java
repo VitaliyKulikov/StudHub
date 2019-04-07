@@ -6,6 +6,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface OrganizationRepository extends PagingAndSortingRepository<Organisation, Long> {
 
@@ -16,4 +18,6 @@ public interface OrganizationRepository extends PagingAndSortingRepository<Organ
     <S extends Organisation> Iterable<S> saveAll(Iterable<S> entities);
 
     Iterable<Organisation> findByConfirmed(Boolean confirmed);
+
+    Optional<Organisation> findByPrincipalEmail(String email);
 }
