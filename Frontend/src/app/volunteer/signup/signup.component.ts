@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
   async submit() {
     this.isLoading = true;
     try {
-      await this.authService.signin(this.volunteerForm.value).toPromise();
+      await this.authService.signupVolunteer(this.volunteerForm.value).toPromise();
       this.router.navigate(['signin']);
     } finally {
       this.isLoading = false;

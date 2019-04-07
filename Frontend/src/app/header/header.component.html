@@ -1,11 +1,25 @@
+<div class="header-nav">
 <header class="row">
-  <div class="col-5 align-items-center logo"><a href="/">LOGO</a></div>
-  <nav class="col-7 nav-links justify-content-between">
-    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">Home</a>
-    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/about-us">About us</a>
-    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/organization/signup">Sign up as organization</a>
-    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/volunteer/signup">Sign up as volunteer</a>
-    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/events">Events</a>
-    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/signin">Sign in</a>
-  </nav>
+    <div class="col-5 col-xl-2 align-items-center logo"><a href="/">LOGO</a></div>
+    <nav class="col-7 col-xl-10 nav-links justify-content-end">
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">Головна</a>
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/events">Події</a>
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/volunteer">Волонтери</a>
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/about-us">Про нас</a>
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/contact">Контакти</a>
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/f-a-q">F.A.Q</a>
+        <ng-container *ngIf="!user || user.role == 'Anonymous'">
+            <a class="signin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" href="/signin">
+                <i class="fas fa-user-alt"></i>
+                Увійти
+            </a>
+        </ng-container>
+        <ng-container *ngIf="user && user.role != 'Anonymous'">
+            <a class="signin">
+                <i class="fas fa-user-alt"></i>
+                {{user.username}}
+            </a>
+        </ng-container>
+    </nav>
 </header>
+</div>

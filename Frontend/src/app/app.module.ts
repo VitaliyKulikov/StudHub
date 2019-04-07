@@ -14,8 +14,11 @@ import {ErrorSerivce} from '../services/error.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from './header/header.component';
 import {SigninComponent} from './signin.component/signin/signin.component';
+import {VolunteerComponent} from './volunteer/volunteer.component';
+import {ItemVolunteerComponent} from './volunteer/item-volunteer/item-volunteer.component';
 import {EventComponent} from './event/event.component'
 import {EditEventComponent} from './event/edit-event/edit-event.component'
+import {ItemEventComponent} from './event/item-event/item-event.component'
 import {ViewEventComponent} from './event/view-event/view-event.component'
 import {CreateEventComponent} from './event/create-event/create-event.component'
 import {SignupComponent as OrganizationSignupComponent} from './organization/signup/signup.component';
@@ -26,6 +29,8 @@ import {TokenInterceptor} from '../interceptors/token.interceptor';
 import {CurrentUserService} from '../services/current-user.service';
 import {LocalStorage, LocalStorageC} from './storage';
 import {AuthService} from '../services/auth.service';
+import {RouteHelperService} from '../services/route-helper.service';
+import {EventService} from '../services/event.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,9 @@ import {AuthService} from '../services/auth.service';
     NotFoundPageComponent,
     HeaderComponent,
     CreateEventComponent,
+    ItemEventComponent,
+    ItemVolunteerComponent,
+    VolunteerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
@@ -58,7 +66,7 @@ import {AuthService} from '../services/auth.service';
         { path: ':id', component:  OrganizationSignupComponent },
       ]},
       { path: 'volunteer', children: [
-        { path: '', redirectTo: '/', pathMatch: 'full' },
+        { path: '', component: VolunteerComponent },
         { path: 'signup', component:  VolunteerSignupComponent },
         { path: ':id', component:  VolunteerSignupComponent },
       ]},
@@ -78,6 +86,8 @@ import {AuthService} from '../services/auth.service';
     ErrorSerivce,
     AuthService,
     CurrentUserService,
+    RouteHelperService,
+    EventService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

@@ -1,27 +1,64 @@
-<div class="col-12">
-  <div class="row">
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
+<div class="row page-events">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-6 block-search">
+        <p>
+          <label for="search">
+            <input id="search" name="search" type="text" placeholder="Search" [(ngModel)]="searchTerm"
+                   (input)="filter()"><i
+              class="fas fa-search"></i>
+          </label>
+          <img src="" alt="">
+        </p>
+      </div>
+      <div class="col-6 block-toggle-view">
+        <p>
+          Вид: <a href="#" class="blue underline">Картки</a>
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-  </div>
-  <div class="row">
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-  </div>
-  <div class="row">
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-  </div>
-  <div class="row">
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-    <div class="col-4">The event</div>
-  </div>
+  <ng-container *ngIf="isLoading">
+    Завантаження...
+  </ng-container>
+  <ng-container *ngIf="!isLoading">
+    <div class="block-my-events col-12 col-xl-12" *ngIf="currentRole==='ROLE_ORGANISATION'">
+      <div class="row">
+        <div class="col-6">
+          <h3>Мої події</h3>
+        </div>
+        <div class="col-6">
+          <a href="events/create" class="btn-create-event">+ Створити нову подію</a>
+        </div>
+      </div>
+      <div class="row">
+        <app-item-event
+            *ngFor="let event of limitIfNecessary(myEvents, isShowMyLimited)"
+            [event]="event"
+            class="col-3">
+        </app-item-event>
+        <ng-container *ngIf="myEvents.length===0">Не знайдено моїх подій.</ng-container>
+      </div>
+      <div class="row" *ngIf="!myEvents || myEvents.length!==0">
+        <div class="col-12">
+          <button class="btn-show-more"
+                  (click)="toggleMyLimited()">{{isShowMyLimited ? '+ Показати усі' : 'Згорнути'}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-12">
+      <h3>Усі події</h3>
+      <div class="row">
+        <app-item-event *ngFor="let event of limitIfNecessary(events, isShowAllLimited)" [event]="event"
+                        class="col-3"></app-item-event>
+        <ng-container *ngIf="events.length===0">Не знайдено подій.</ng-container>
+      </div>
+      <div class="row" *ngIf="!events || events.length!==0">
+        <div class="col-12 justify-content-center">
+          <button class="btn-show-more"
+                  (click)="toggleAllLimited()">{{isShowAllLimited ? '+ Показати усі' : 'Згорнути'}}</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>

@@ -1,26 +1,50 @@
-menu, ul, ol, p {
-  margin: 0;
+menu, li, ul, ol, p, h1, h2, h3, h4, h5, h6, label {
+    margin: 0;
+    padding: 0;
 }
 
 a, a:hover {
-  text-decoration: none;
+    text-decoration: none;
+}
+
+button, button:active {
+  border: none;
+  outline: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .container {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 .container > * {
-  display: block;
+    display: block;
 }
 
-@media (min-width: 1200px) {
-  .container {
-      max-width: 1440px;
-  }
+a.blue {
+    color: #0793E4;
+}
+
+a.underline {
+    text-decoration: underline;
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+    }
 }
 
 .required-asterisk:after {
-  content: '*';
-  color: red;
+    content: '*';
+    color: red;
+}
+
+.header-black .header-nav {
+    background-color: black;
 }
