@@ -11,6 +11,12 @@ button {
   outline: none;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .container {
   min-height: 100vh;
 }
