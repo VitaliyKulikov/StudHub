@@ -1,7 +1,11 @@
 package org.hackathon.dto;
 
-import java.time.LocalDateTime;
+import org.springframework.hateoas.core.Relation;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Relation(value = "event", collectionRelation = "events")
 public class EventDto {
     private long id;
     private String name;
@@ -10,6 +14,7 @@ public class EventDto {
     private String description;
     private String location;
     private OrganisationDto owner;
+    private List<VolunteerDto> participants;
     private byte[] image;
 
     public long getId() {
@@ -74,5 +79,13 @@ public class EventDto {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public List<VolunteerDto> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<VolunteerDto> participants) {
+        this.participants = participants;
     }
 }
