@@ -6,9 +6,9 @@ a, a:hover {
     text-decoration: none;
 }
 
-button {
-    border: none;
-    outline: none;
+button, button:active {
+  border: none;
+  outline: none;
 }
 
 .clearfix::after {

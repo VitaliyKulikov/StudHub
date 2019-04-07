@@ -1,10 +1,56 @@
 .page-events {
+  margin-bottom: 40px;
+
   h3 {
     margin-bottom: 20px;
     color: #848484;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1em;
     font-weight: 600;
+  }
+
+  .btn-show-more {
+    display: block;
+    margin: 0 auto;
+    color: #0793E4;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 1.2em;
+    text-align: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .block-search {
+    margin-bottom: 32px;
+    
+    label {
+      position: relative;
+
+      i {
+        position: absolute;
+        color: #8A8A99;
+        right: 15px;
+        top: 50%;
+        transform: translate(0, -50%);
+        font-size: 16px;
+      }
+
+      input {
+        padding: 8px 20px;
+        line-height: 1em;
+        width: 300px;
+        border-radius: 4px;
+        color: #868C98;
+        border: none;
+        outline: none;
+        background-color: #F4F5F8;
+      }
+    }
+
   }
 
   .block-my-events {
